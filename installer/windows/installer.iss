@@ -35,7 +35,7 @@ Name: "vst3only"; Description: "VST3 Plugin Only"
 Name: "custom"; Description: "Custom Installation"; Flags: iscustom
 
 [Components]
-Name: "vst3"; Description: "64-bit VST3 Plugin (DAW support: FL Studio, Ableton Live, Cubase, Studio One, Reaper)"; Types: full vst3only custom; Flags: checkable_alone
+Name: "vst3"; Description: "64-bit VST3 Plugin (DAW support: FL Studio, Ableton Live, Cubase, Studio One, Reaper)"; Types: full vst3only custom
 Name: "standalone"; Description: "Standalone Application (.exe)"; Types: full custom
 Name: "docs"; Description: "User Manual & Documentation (PDF, HTML, TXT)"; Types: full custom
 
