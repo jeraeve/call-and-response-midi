@@ -1,0 +1,148 @@
+================================================================================
+                           CALL & RESPONSE MIDI (v1.0.5)
+================================================================================
+Viral Samples | Intelligent Algorithmic Phrase Generator & 303-Style Sequencer
+Formats: VST3, Audio Unit (AU), Standalone
+Platforms: macOS (Apple Silicon M1-M4 & Intel 64-bit) & Windows 10/11 (64-bit)
+================================================================================
+
+1. ATTRIBUTIONS & CREATIVE CREDITS
+--------------------------------------------------------------------------------
+Call & Response MIDI stands on the shoulders of creative musical innovators:
+
+* NORDL3:
+  Deep gratitude and attribution to Nordl3 for the original project concept
+  and pioneering the algorithmic foundations of automated dual-phrase musical
+  dialogue (Call & Response).
+
+* SIDEBRAIN:
+  Sincere appreciation and attribution to SideBrain for his renowned Max for
+  Live implementation, visionary creative workflow concepts, and dedication to
+  sharing innovative composition tools with the electronic music community.
+
+* EVOLUTION BY VIRAL SAMPLES:
+  Viral Samples evolved and expanded these foundational ideas into a native,
+  high-performance C++/JUCE instrument for macOS:
+  - Full native Audio Unit (AU), VST3, and Standalone universal 64-bit binaries.
+  - Integrated analog-modelled 303 synthesizer with squelchy resonant low-pass
+    filter and envelope decay for instant previewing.
+  - Interactive 2D Piano Roll with full pitch transpose, step movement, gate
+    handles, and double-click note editing.
+  - Dynamic Scale Transposition that automatically conforms existing phrases
+    when modulating keys or scales while preserving modal intervals.
+  - 8 Rapid Preset Slots (A-H) with instant Cmd+Click saving and Double-Click
+    loading.
+  - Multi-Level Undo/Redo history (24 states) and global MIDI Panic control.
+  - Vector Lock Icons to freeze chosen parameters during Dice randomization.
+  - 3-Way Split Views (BOTH, CALL, RESP) offering seamless dual-lane and
+    focused editing.
+  - 9 Surgical Mutation Engines and Drag & Drop MIDI Export with 4 routing
+    configurations.
+
+
+2. FEATURE SUMMARY
+--------------------------------------------------------------------------------
+* Musical Engine:
+  - 35 Scales (Diatonic, Pentatonic, Blues, Exotic, Arp Pools).
+  - 40 Musical Styles (Acid, Rave, Techno, House, Electro, etc.).
+  - 38 Response Strategies (Inversions, Echoes, Harmonic Cadences, etc.).
+  - 24 Opening Motif types.
+
+* Dynamic Scale Transposition:
+  - Real-time automatic note conforming on Key, Scale, or Octave change.
+  - Preserves minor/major 3rds, 6ths, 7ths, and functional intervals.
+  - Reflects immediately in the Piano Roll, Step Grid, Preview Synth, and
+    exported MIDI.
+
+* Interactive 2D Piano Roll:
+  - Click & drag notes vertically to transpose pitch with audio feedback.
+  - Drag notes horizontally to move across steps.
+  - Double-click to add or delete notes.
+  - Drag note right edges to resize gate duration.
+  - Left-hand keyboard for pitch preview.
+
+* Step Grid Sequencer:
+  - Independent 16-step Call and Response lanes.
+  - Lane controls: Mute, Shift (< / >), Octave Transpose (-8ve / +8ve),
+    Inversion (Inv), and Reversal (Rev).
+  - Accent and Slide/Portamento toggles per step.
+
+* 3-Way Split Views:
+  - BOTH: Stacked Call and Response step grids above the combined Piano Roll.
+  - CALL: Call Step Grid on top with Call Piano Roll below.
+  - RESP: Response Step Grid on top with Response Piano Roll below.
+
+* 303 Preview Synthesizer:
+  - Built-in analog-modelled oscillator, 24dB resonant low-pass filter,
+    and snappy decay envelope for instant standalone auditioning.
+
+* Performance Knobs:
+  - DENSITY: Dynamically thins or populates note events.
+  - GATE: Adjusts global note duration (10% to 250%).
+  - OCT JUMP: Introduces octave leaps (+-12, +24 semitones).
+  - RESOLVE: Directs phrase-ending notes toward harmonic tonic resolution.
+
+* Presets, History & Parameter Locks:
+  - 8 memory slots (A-H) with Cmd+Click saving & Double-Click loading.
+  - 24-step multi-level Undo/Redo history buffer.
+  - Global MIDI Panic button (All-Notes-Off / All-Sound-Off).
+  - Padlock vector icons next to Style, Strategy, Key/Scale, and Motif.
+
+* Mutation Engine:
+  - 9 surgical targets: Rhythm, Pitch, Articulation, Ending, Motif, Whole,
+    Response, Call, or Linked.
+  - 5 intensity levels: Tiny, Small, Medium, Strong, Brutal.
+
+* MIDI Drag & Drop Export:
+  - Direct drag to DAW timeline or desktop.
+  - 4 Export Modes: Combined, Call Only, Response Only, Layered.
+  - Whole-bar padding for seamless DAW looping.
+
+* Universal Binary:
+  - Native 64-bit performance on Apple Silicon (M1-M4) & Intel Macs.
+  - Pre-codesigned and dequarantined.
+
+
+3. INSTALLATION & SETUP
+--------------------------------------------------------------------------------
+macOS INSTALLATION:
+Double-click "Call & Response MIDI v1.0.5 Installer.pkg" to install all
+components automatically:
+- VST3 Plugin:   /Library/Audio/Plug-Ins/VST3/Call & Response MIDI.vst3
+- AU Component:  /Library/Audio/Plug-Ins/Components/Call & Response MIDI.component
+- Documentation: /Library/Audio/Documentation/Viral Samples/Call & Response MIDI/
+
+The installer automatically de-quarantines the files, applies code signatures,
+sets POSIX permissions, and flushes AudioComponentRegistrar so your DAWs
+(Logic Pro, Ableton Live, FL Studio, Studio One, Cubase, Reaper) recognize the
+plugin immediately.
+
+WINDOWS INSTALLATION:
+Run "Call & Response MIDI v1.0.5 Windows Setup.exe" (built via Inno Setup,
+build_windows.bat, or GitHub Actions CI):
+- VST3 Plugin:   C:\Program Files\Common Files\VST3\Call & Response MIDI.vst3
+- Standalone:    C:\Program Files\Viral Samples\Call & Response MIDI\
+- Documentation: C:\Program Files\Viral Samples\Call & Response MIDI\Documentation\
+
+
+4. QUICK KEYBOARD REFERENCE
+--------------------------------------------------------------------------------
+Action                              Gesture / Shortcut
+--------------------------------------------------------------------------------
+Save Preset to Slot A-H             Cmd+Click (or Shift/Alt/Ctrl) on slot button
+Load Preset from Slot A-H           Double-Click on slot button
+Preset Context Menu                 Right-Click on slot button
+Add Note in Piano Roll              Double-Click on empty grid cell
+Delete Note in Piano Roll           Double-Click (or Shift-Click) on existing note
+Move Note (Pitch & Step)            Click note center and drag vertically/horizontally
+Resize Note Duration                Hover right edge of note (<->) and drag
+Toggle Accent                       Right-Click note (orange badge)
+Toggle Slide (Portamento)           Alt-Click note (cyan line)
+Lock / Unlock Parameter             Click vector padlock icon next to parameter
+Audition Pitch                      Click piano keys along left of Piano Roll
+--------------------------------------------------------------------------------
+
+================================================================================
+Call & Response MIDI v1.0.5
+Copyright (c) 2026 Viral Samples. All rights reserved.
+================================================================================

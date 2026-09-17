@@ -1,0 +1,55 @@
+#!/bin/bash
+# ==============================================================================
+# Call & Response MIDI v1.0.5 - Post-installation Script
+# Viral Samples
+# ==============================================================================
+set -e
+
+echo "Running Call & Response MIDI postinstall..."
+
+VST3_PATH="/Library/Audio/Plug-Ins/VST3/Call & Response MIDI.vst3"
+AU_PATH="/Library/Audio/Plug-Ins/Components/Call & Response MIDI.component"
+DOC_PATH="/Library/Audio/Documentation/Viral Samples/Call & Response MIDI"
+
+# Remove macOS Gatekeeper quarantine extended attributes
+echo "De-quarantining installed plugins..."
+if [ -d "$VST3_PATH" ]; then
+    xattr -cr "$VST3_PATH" 2>/dev/null || true
+    chmod -R 755 "$VST3_PATH" 2>/dev/null || true
+    codesign --force --deep -s - "$VST3_PATH" 2>/dev/null || true
+fi
+
+if [ -d "$AU_PATH" ]; then
+    xattr -cr "$AU_PATH" 2>/dev/null || true
+    chmod -R 755 "$AU_PATH" 2>/dev/null || true
+    codesign --force --deep -s - "$AU_PATH" 2>/dev/null || true
+fi
+
+if [ -d "$DOC_PATH" ]; then
+    xattr -cr "$DOC_PATH" 2>/dev/null || true
+    chmod -R 755 "$DOC_PATH" 2>/dev/null || true
+fi
+
+# Also dequarantine and codesign in logged-in user's personal Library if present
+CONSOLE_USER=$(stat -f "%Su" /dev/console 2>/dev/null || echo "")
+if [ -n "$CONSOLE_USER" ] && [ "$CONSOLE_USER" != "root" ]; then
+    USER_HOME=$(eval echo "~$CONSOLE_USER")
+    USER_VST3="$USER_HOME/Library/Audio/Plug-Ins/VST3/Call & Response MIDI.vst3"
+    USER_AU="$USER_HOME/Library/Audio/Plug-Ins/Components/Call & Response MIDI.component"
+    
+    if [ -d "$USER_VST3" ]; then
+        xattr -cr "$USER_VST3" 2>/dev/null || true
+        codesign --force --deep -s - "$USER_VST3" 2>/dev/null || true
+    fi
+    if [ -d "$USER_AU" ]; then
+        xattr -cr "$USER_AU" 2>/dev/null || true
+        codesign --force --deep -s - "$USER_AU" 2>/dev/null || true
+    fi
+fi
+
+# Reset macOS AudioComponentRegistrar so DAWs (Logic Pro, Ableton, etc.) pick up new AU immediately
+echo "Resetting AudioComponentRegistrar..."
+killall -9 AudioComponentRegistrar 2>/dev/null || true
+
+echo "Call & Response MIDI postinstall completed successfully."
+exit 0

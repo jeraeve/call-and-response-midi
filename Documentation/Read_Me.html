@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Call & Response MIDI — Read Me & Attributions</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card: #181b24;
+    --border: #2a2e3d;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --cyan: #00d2ff;
+    --cyan-dim: rgba(0, 210, 255, 0.12);
+    --blue: #0284c7;
+    --table-border: #334155;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    padding: 30px 20px;
+  }
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 36px 42px;
+  }
+  h1 {
+    color: #ffffff;
+    font-size: 1.9rem;
+    margin-bottom: 6px;
+    border-bottom: 2px solid var(--cyan);
+    padding-bottom: 8px;
+  }
+  .subtitle {
+    color: var(--cyan);
+    font-size: 1.02rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+    margin-bottom: 22px;
+  }
+  h2 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    margin-top: 24px;
+    margin-bottom: 12px;
+    border-left: 4px solid var(--cyan);
+    padding-left: 10px;
+  }
+  h3 {
+    color: var(--cyan);
+    font-size: 1.05rem;
+    margin-top: 14px;
+    margin-bottom: 8px;
+  }
+  p {
+    margin-bottom: 11px;
+    color: var(--text);
+    font-size: 0.95rem;
+  }
+  ul {
+    margin-left: 20px;
+    margin-bottom: 14px;
+  }
+  li {
+    margin-bottom: 5px;
+    font-size: 0.93rem;
+  }
+  .attribution-box {
+    background: var(--cyan-dim);
+    border: 1px solid var(--cyan);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 20px;
+  }
+  .attribution-box h3 {
+    margin-top: 0;
+    color: #fff;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 18px;
+    font-size: 0.88rem;
+  }
+  th, td {
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    text-align: left;
+  }
+  th {
+    background: #1f2430;
+    color: var(--cyan);
+    font-weight: 600;
+  }
+  tr:nth-child(even) {
+    background: #141720;
+  }
+  code {
+    background: #0a0c10;
+    color: var(--cyan);
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 0.88em;
+    font-family: "SF Mono", Menlo, monospace;
+    border: 1px solid #232734;
+  }
+  .badge {
+    display: inline-block;
+    background: rgba(0, 210, 255, 0.15);
+    color: var(--cyan);
+    border: 1px solid var(--cyan);
+    padding: 2px 7px;
+    border-radius: 4px;
+    font-size: 0.78rem;
+    font-weight: 600;
+  }
+  footer {
+    margin-top: 28px;
+    text-align: center;
+    font-size: 0.82rem;
+    color: var(--muted);
+    border-top: 1px solid var(--border);
+    padding-top: 14px;
+  }
+
+  @page {
+    size: A4;
+    margin: 14mm 14mm 14mm 14mm;
+  }
+
+  @media print {
+    body {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      font-size: 9.5pt;
+      line-height: 1.45;
+      padding: 0 !important;
+    }
+    .container {
+      max-width: 100% !important;
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    h1 {
+      color: #0f172a !important;
+      border-bottom: 2px solid #0284c7 !important;
+      font-size: 1.6rem !important;
+    }
+    .subtitle {
+      color: #0284c7 !important;
+    }
+    .meta {
+      color: #64748b !important;
+    }
+    h2 {
+      color: #0f172a !important;
+      border-left: 4px solid #0284c7 !important;
+      font-size: 1.2rem !important;
+      margin-top: 16pt !important;
+      padding-left: 6pt !important;
+      page-break-after: avoid;
+    }
+    h3 {
+      color: #0369a1 !important;
+      font-size: 1rem !important;
+      page-break-after: avoid;
+    }
+    p, li {
+      color: #334155 !important;
+      font-size: 9.2pt !important;
+    }
+    strong {
+      color: #0f172a !important;
+    }
+    .attribution-box {
+      background: #f0f9ff !important;
+      border: 1px solid #0284c7 !important;
+      page-break-inside: avoid;
+    }
+    .attribution-box h3 {
+      color: #0f172a !important;
+    }
+    th {
+      background: #f1f5f9 !important;
+      color: #0f172a !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+    td {
+      border: 1px solid #cbd5e1 !important;
+      color: #334155 !important;
+    }
+    tr:nth-child(even) {
+      background: #f8fafc !important;
+    }
+    table, tr {
+      page-break-inside: avoid;
+    }
+    code {
+      background: #f1f5f9 !important;
+      color: #0369a1 !important;
+      border: 1px solid #cbd5e1 !important;
+    }
+    .badge {
+      background: #e0f2fe !important;
+      color: #0284c7 !important;
+      border: 1px solid #0284c7 !important;
+    }
+    footer {
+      border-top: 1px solid #e2e8f0 !important;
+      color: #64748b !important;
+      margin-top: 18pt !important;
+      page-break-inside: avoid;
+    }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Call &amp; Response MIDI (v1.0.5)</h1>
+  <div class="subtitle">Intelligent Algorithmic Phrase Generator &amp; 303-Style Sequencer</div>
+  <div class="meta">Viral Samples &bull; Formats: VST3, Audio Unit (AU), Standalone &bull; Platforms: macOS (Apple Silicon &amp; Intel) &amp; Windows (64-bit)</div>
+
+  <div class="attribution-box">
+    <h3>Attributions &amp; Creative Credits</h3>
+    <p style="margin-top:6px;">Call &amp; Response MIDI stands on the shoulders of brilliant music technology pioneers:</p>
+    <ul>
+      <li><strong>Nordl3:</strong> Heartfelt attribution and credit to <strong>Nordl3</strong> for the original project concept and foundational algorithmic principles of dual-phrase call-and-response phrase generation.</li>
+      <li><strong>SideBrain:</strong> Sincere gratitude and attribution to <strong>SideBrain</strong> for his visionary Max for Live device implementation and creative workflow concepts that popularized call-and-response MIDI composition for modern electronic music producers.</li>
+    </ul>
+    <p><strong>Viral Samples Evolution:</strong> We expanded these core concepts into a high-performance, cross-platform C++/JUCE instrument featuring a resonant analog 303 synth, interactive 2D piano roll note editing, dynamic scale transposition, fast preset slots, multi-state undo/redo, vector lock icons, and universal Apple Silicon/Intel and Windows 64-bit optimization.</p>
+  </div>
+
+  <h2>Feature Summary</h2>
+  <table>
+    <tr><th>Feature</th><th>Description</th></tr>
+    <tr><td><strong>Dual-Lane Generative Engine</strong></td><td>Algorithmic Call and Response phrases with 35 Scales, 40 Styles, 38 Response Strategies, and 24 Motif hooks.</td></tr>
+    <tr><td><strong>Dynamic Scale Transposition</strong></td><td>Automatically translates existing notes to new keys/scales while preserving harmonic interval relationships.</td></tr>
+    <tr><td><strong>Interactive 2D Piano Roll</strong></td><td>Drag notes horizontally (step move) or vertically (pitch transpose), double-click to add/delete, resize note gate handles.</td></tr>
+    <tr><td><strong>3-Way Split Views</strong></td><td>Instant switching between <code>BOTH</code> (stacked step grids + piano roll), <code>CALL</code>, and <code>RESP</code> focused views.</td></tr>
+    <tr><td><strong>Built-in 303 Acid Synth</strong></td><td>Analog-modelled oscillator, squelchy resonant low-pass filter, and snappy decay for immediate standalone auditioning.</td></tr>
+    <tr><td><strong>Rapid Preset Slots (A–H)</strong></td><td><code>Cmd+Click</code> to save current state; <code>Double-Click</code> to load. Visual occupancy dots and right-click menus.</td></tr>
+    <tr><td><strong>Undo/Redo &amp; Panic</strong></td><td>24-step multi-level undo/redo buffer and global MIDI All-Notes-Off panic button.</td></tr>
+    <tr><td><strong>Parameter Lock Icons</strong></td><td>Vector padlock toggles next to Style, Strategy, Key/Scale, and Motif to protect parameters during Dice rolls.</td></tr>
+    <tr><td><strong>9 Mutation Modes</strong></td><td>Targeted mutation: Rhythm, Pitch, Articulation, Ending, Motif, Whole, Response, Call, or Linked.</td></tr>
+    <tr><td><strong>MIDI Drag &amp; Drop</strong></td><td>Export directly to DAW arrangements with Combined, Call Only, Response Only, or Layered multi-channel routing.</td></tr>
+    <tr><td><strong>Cross-Platform Support</strong></td><td>Native 64-bit performance on macOS (Apple Silicon M1–M4 &amp; Intel) and Windows 10/11 (64-bit).</td></tr>
+  </table>
+
+  <h2>Installation &amp; Setup</h2>
+  <h3>macOS</h3>
+  <p>Run the included <strong><code>Call &amp; Response MIDI v1.0.5 Installer.pkg</code></strong> to install:</p>
+  <ul>
+    <li><code>/Library/Audio/Plug-Ins/VST3/Call &amp; Response MIDI.vst3</code> (VST3)</li>
+    <li><code>/Library/Audio/Plug-Ins/Components/Call &amp; Response MIDI.component</code> (Audio Unit)</li>
+    <li><code>/Library/Audio/Documentation/Viral Samples/Call &amp; Response MIDI/</code> (Documentation)</li>
+  </ul>
+  <p>The installer automatically strips quarantine attributes (<code>xattr -cr</code>), verifies code signatures, sets permissions, and refreshes the macOS audio component cache.</p>
+
+  <h3>Windows</h3>
+  <p>Run <strong><code>Call &amp; Response MIDI v1.0.5 Windows Setup.exe</code></strong> (built via Inno Setup script <code>installer/windows/installer.iss</code>, <code>build_windows.bat</code>, or GitHub Actions CI):</p>
+  <ul>
+    <li><code>C:\Program Files\Common Files\VST3\Call &amp; Response MIDI.vst3</code> (VST3 64-bit)</li>
+    <li><code>C:\Program Files\Viral Samples\Call &amp; Response MIDI\Call &amp; Response MIDI.exe</code> (Standalone)</li>
+    <li><code>C:\Program Files\Viral Samples\Call &amp; Response MIDI\Documentation\</code> (User Manuals &amp; Read Me)</li>
+  </ul>
+
+  <h2>Quick Keyboard Reference</h2>
+  <table>
+    <tr><th>Action</th><th>Shortcut / Gesture</th></tr>
+    <tr><td><strong>Save Preset to Slot A–H</strong></td><td><code>Cmd+Click</code> (or Shift/Alt/Ctrl+Click) on slot button</td></tr>
+    <tr><td><strong>Load Preset from Slot A–H</strong></td><td><code>Double-Click</code> on slot button</td></tr>
+    <tr><td><strong>Add / Delete Note in Piano Roll</strong></td><td><code>Double-Click</code> on empty grid cell or existing note</td></tr>
+    <tr><td><strong>Move Note Pitch &amp; Step</strong></td><td>Click note center and drag vertically (pitch) or horizontally (step)</td></tr>
+    <tr><td><strong>Adjust Note Duration</strong></td><td>Hover over note right edge (<code>&harr;</code> cursor) and drag horizontally</td></tr>
+    <tr><td><strong>Toggle Accent / Slide</strong></td><td><code>Right-Click</code> note for Accent (orange badge); <code>Alt-Click</code> for Slide (cyan line)</td></tr>
+    <tr><td><strong>Lock / Unlock Parameter</strong></td><td>Click vector padlock icon next to parameter</td></tr>
+  </table>
+
+  <footer>
+    <p>Call &amp; Response MIDI v1.0.5 &bull; &copy; 2026 Viral Samples. All rights reserved.</p>
+  </footer>
+</div>
+</body>
+</html>

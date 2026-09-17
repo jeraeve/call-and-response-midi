@@ -1,0 +1,25 @@
+# Build outputs
+build/
+build-*/
+dist/
+Viral Samples - Call & Response MIDI*/
+installer/staging/
+installer/packages/
+installer/*.pkg
+*.o
+*.obj
+*.a
+*.lib
+*.dylib
+*.so
+*.dll
+
+# macOS metadata
+.DS_Store
+._*
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.xcodeproj
+*.xcworkspace
