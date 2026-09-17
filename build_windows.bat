@@ -16,6 +16,13 @@ if %ERRORLEVEL% neq 0 (
     exit /b 1
 )
 
+:: Apply JUCE patch for special characters in target path
+git -C vendor\JUCE apply --check ..\..\cmake\juce-verbatim.patch >nul 2>nul
+if %ERRORLEVEL% equ 0 (
+    git -C vendor\JUCE apply ..\..\cmake\juce-verbatim.patch
+    echo [INFO] Applied JUCE patch for target names with ampersand.
+)
+
 :: Configure CMake with Visual Studio 2022 (x64)
 echo [1/3] Configuring CMake build system...
 cmake -B build -G "Visual Studio 17 2022" -A x64

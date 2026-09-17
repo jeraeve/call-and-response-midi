@@ -16,6 +16,12 @@ jobs:
         with:
           submodules: recursive
 
+      - name: Patch JUCE for special characters in target names
+        shell: pwsh
+        run: |
+          git -C vendor/JUCE apply ../../cmake/juce-verbatim.patch
+          Write-Host "Applied JUCE patch successfully."
+
       - name: Setup MSVC environment
         uses: ilammy/msvc-dev-cmd@v1
         with:

@@ -1,0 +1,14 @@
+diff --git a/extras/Build/CMake/JUCEUtils.cmake b/extras/Build/CMake/JUCEUtils.cmake
+index 8a6b0d6..cfe6359 100644
+--- a/extras/Build/CMake/JUCEUtils.cmake
++++ b/extras/Build/CMake/JUCEUtils.cmake
+@@ -1236,7 +1236,8 @@ function(_juce_set_plugin_target_properties shared_code_target kind)
+             COMMAND ${CMAKE_COMMAND} -E echo "removing moduleinfo.json"
+             COMMAND ${CMAKE_COMMAND} -E remove -f
+                 "${output_path}/Contents/moduleinfo.json"
+-                "${output_path}/Contents/Resources/moduleinfo.json")
++                "${output_path}/Contents/Resources/moduleinfo.json"
++            VERBATIM)
+ 
+         if(vst3_auto_manifest)
+             juce_enable_vst3_manifest_step(${shared_code_target})
