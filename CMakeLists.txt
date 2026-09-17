@@ -26,6 +26,7 @@ juce_add_plugin(CallAndResponseMIDI
     PLUGIN_CODE Crgm
     FORMATS ${PLUGIN_FORMATS}
     PRODUCT_NAME "Call & Response MIDI"
+    VST3_AUTO_MANIFEST FALSE
 )
 
 target_sources(CallAndResponseMIDI PRIVATE
