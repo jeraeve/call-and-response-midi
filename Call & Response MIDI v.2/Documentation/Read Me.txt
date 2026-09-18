@@ -1,0 +1,68 @@
+======================================================================
+CALL & RESPONSE MIDI (v2.0.0)
+Viral Samples | Intelligent Algorithmic Phrase Generator & 303 Sequencer
+======================================================================
+
+Formats: VST3, Audio Unit (AU), Standalone
+Platforms: macOS Universal (Mojave 10.14+ Intel & Apple Silicon) & Windows 64-bit
+
+----------------------------------------------------------------------
+ATTRIBUTIONS & ACKNOWLEDGEMENTS
+----------------------------------------------------------------------
+Call & Response MIDI stands on the shoulders of creative musical innovators:
+- Nordl3: Original project concept and algorithmic dual-phrase dialogue.
+- SideBrain: Renowned Max for Live implementation and workflow concepts.
+
+EVOLUTION BY VIRAL SAMPLES (v2.0.0):
+- Complete modern dark interface overhaul with fixed 1180x750 aspect ratio.
+- Interactive top ribbon bar with direct value displays for OCT, KEY,
+  SCALE, b/#, STEPS, RATE, SWING with dropdown menus & steppers.
+- Tempo-relative RATE: Half speed, 0 (Normal 16th sync), Double speed.
+- Continuous SWING (0%-100%) and VELOCITY (1-127) vertical drag editing.
+- Dual Phrase Lanes (CALL & RESPONSE) with independent MUTE bypass,
+  DICE mutators, modifiable MUTATE % depth, and Lane Lock padlocks.
+- Four-Tab Inspector Panel: GENERATE, SHAPE, ARTICULATION, OPTIONS with
+  individual vector parameter locks for procedural composition.
+- Interactive Piano Roll with color-coded notes (Orange for Call, Teal
+  for Response), repeatable right-edge gate resizing up to 4.0x, and
+  step auditioning with auto-stop on mouse release.
+- Integrated analog-modelled 303 preview synthesizer with resonant low-pass
+  filter and snappy envelope decay.
+- 8 rapid-access preset slots [A]-[H] (Cmd+Click save, double-click load).
+- Multi-level undo/redo history and global All-Notes-Off MIDI Panic.
+- Drag & drop MIDI export directly to DAW arrangements.
+
+----------------------------------------------------------------------
+INSTALLATION
+----------------------------------------------------------------------
+macOS Universal (.pkg):
+Double-click "Call & Response MIDI v2.0.0 Installer.pkg" to install:
+  - VST3: /Library/Audio/Plug-Ins/VST3/
+  - AU:   /Library/Audio/Plug-Ins/Components/
+  - Docs: /Library/Audio/Documentation/Viral Samples/Call & Response MIDI/
+
+Windows 64-bit (Setup.exe):
+Run "Call & Response MIDI v2.0.0 Windows Setup.exe" to install:
+  - VST3: C:\Program Files\Common Files\VST3\
+  - App:  C:\Program Files\Viral Samples\Call & Response MIDI\
+  - Docs: C:\Program Files\Viral Samples\Call & Response MIDI\Documentation\
+
+----------------------------------------------------------------------
+QUICK KEY COMMANDS
+----------------------------------------------------------------------
+Save Preset to Slot A-H : Cmd+Click (or Shift/Alt/Ctrl+Click) on slot
+Load Preset from Slot   : Double-Click on slot
+Preset Context Menu     : Right-Click on slot
+Continuous Swing Drag   : Click and drag vertically on SWING box
+Continuous Velocity Drag: Click and drag vertically on VELOCITY box
+Add/Delete Note         : Double-Click grid cell or note
+Move Note               : Drag note center horizontally/vertically
+Resize Note Gate        : Hover right edge of note (<->) and drag
+Audition Step           : Click note (stops on mouse release)
+Audition Pitch          : Click piano keys on left margin
+Toggle Accent / Slide   : Right-Click for Accent; Alt-Click for Slide
+Mute Lane               : Click MUTE on Call or Response lane
+Lock Lane               : Click padlock icon on lane header
+Offset Notes            : Click [ < ] or [ > ] buttons under rotaries
+
+Copyright (c) 2026 Viral Samples. All rights reserved.

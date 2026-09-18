@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<installer-gui-script minSpecVersion="1">
+    <title>Call &amp; Response MIDI v2.0.0</title>
+    <welcome file="welcome.html" mime-type="text/html"/>
+    <conclusion file="conclusion.html" mime-type="text/html"/>
+    <options customize="always" require-scripts="false" hostArchitectures="x86_64,arm64"/>
+    <choices-outline>
+        <line choice="com.viralsamples.pkg.callresponsemidi.vst3"/>
+        <line choice="com.viralsamples.pkg.callresponsemidi.au"/>
+        <line choice="com.viralsamples.pkg.callresponsemidi.doc"/>
+    </choices-outline>
+    <choice id="com.viralsamples.pkg.callresponsemidi.vst3" 
+            title="Call &amp; Response MIDI VST3 Plugin" 
+            description="Installs 64-bit universal (Mojave Intel &amp; Apple Silicon) VST3 plugin into /Library/Audio/Plug-Ins/VST3" 
+            start_selected="true">
+        <pkg-ref id="com.viralsamples.pkg.callresponsemidi.vst3"/>
+    </choice>
+    <pkg-ref id="com.viralsamples.pkg.callresponsemidi.vst3" version="2.0.0" onConclusion="none">vst3.pkg</pkg-ref>
+
+    <choice id="com.viralsamples.pkg.callresponsemidi.au" 
+            title="Call &amp; Response MIDI Audio Unit (AU) Plugin" 
+            description="Installs 64-bit universal (Mojave Intel &amp; Apple Silicon) AU plugin into /Library/Audio/Plug-Ins/Components" 
+            start_selected="true">
+        <pkg-ref id="com.viralsamples.pkg.callresponsemidi.au"/>
+    </choice>
+    <pkg-ref id="com.viralsamples.pkg.callresponsemidi.au" version="2.0.0" onConclusion="none">au.pkg</pkg-ref>
+
+    <choice id="com.viralsamples.pkg.callresponsemidi.doc" 
+            title="User Manual &amp; Documentation" 
+            description="Installs comprehensive User Manual (PDF, HTML &amp; Markdown) into /Library/Audio/Documentation/Viral Samples/Call &amp; Response MIDI" 
+            start_selected="true">
+        <pkg-ref id="com.viralsamples.pkg.callresponsemidi.doc"/>
+    </choice>
+    <pkg-ref id="com.viralsamples.pkg.callresponsemidi.doc" version="2.0.0" onConclusion="none">doc.pkg</pkg-ref>
+</installer-gui-script>

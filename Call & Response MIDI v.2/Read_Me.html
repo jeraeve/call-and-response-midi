@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Call & Response MIDI — Read Me (v2.0.0)</title>
+<style>
+  :root {
+    --bg: #0f1117;
+    --card-bg: #181b24;
+    --border: #2a2e3d;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --cyan: #00d2ff;
+    --cyan-glow: rgba(0, 210, 255, 0.15);
+    --orange: #ff9f43;
+    --code-bg: #0a0c10;
+    --table-stripe: #1e2230;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 40px 20px;
+  }
+  .container {
+    max-width: 880px;
+    margin: 0 auto;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 48px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  }
+  h1 {
+    color: #fff;
+    font-size: 2.1rem;
+    margin-bottom: 12px;
+    border-bottom: 2px solid var(--cyan);
+    padding-bottom: 10px;
+    break-after: avoid;
+  }
+  h2 {
+    color: #fff;
+    font-size: 1.45rem;
+    margin-top: 32px;
+    margin-bottom: 14px;
+    border-left: 4px solid var(--cyan);
+    padding-left: 12px;
+    break-after: avoid;
+  }
+  h3 {
+    color: var(--cyan);
+    font-size: 1.15rem;
+    margin-top: 22px;
+    margin-bottom: 8px;
+    break-after: avoid;
+  }
+  h4 {
+    color: var(--orange);
+    font-size: 1.02rem;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    break-after: avoid;
+  }
+  p {
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  strong {
+    color: #ffffff;
+    font-weight: 600;
+  }
+  hr {
+    border: 0;
+    height: 1px;
+    background: var(--border);
+    margin: 28px 0;
+  }
+  ul {
+    margin-left: 24px;
+    margin-bottom: 16px;
+  }
+  li {
+    margin-bottom: 6px;
+  }
+  code {
+    background: var(--code-bg);
+    color: var(--cyan);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.88em;
+    border: 1px solid rgba(0,210,255,0.2);
+  }
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin-bottom: 20px;
+  }
+  pre code {
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #a5b4fc;
+    font-size: 0.9em;
+    display: block;
+    line-height: 1.5;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.93rem;
+  }
+  th {
+    background: #222736;
+    color: var(--cyan);
+    text-align: left;
+    padding: 12px 16px;
+    border-bottom: 2px solid var(--border);
+    font-weight: 600;
+  }
+  td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  tr:nth-child(even) {
+    background: var(--table-stripe);
+  }
+  tr:last-child td {
+    border-bottom: none;
+  }
+  @media print {
+    body { background: #fff; color: #111; padding: 0; }
+    .container { background: #fff; border: none; box-shadow: none; padding: 20px; max-width: 100%; }
+    h1 { color: #000; border-bottom: 2px solid #0099cc; }
+    h2 { color: #111; border-left: 4px solid #0099cc; }
+    h3 { color: #0077aa; }
+    h4 { color: #cc6600; }
+    strong { color: #000; }
+    th { background: #f0f4f8; color: #0077aa; border-bottom: 2px solid #ccc; }
+    tr:nth-child(even) { background: #f9fbfd; }
+    td, table { border-color: #ddd; }
+    code { background: #f1f5f9; color: #0077aa; border-color: #cbd5e1; }
+    pre { background: #f8fafc; border-color: #cbd5e1; }
+    pre code { color: #334155; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<h1>Call & Response MIDI (v2.0.0)</h1>
+<p><strong>Viral Samples | Intelligent Algorithmic Phrase Generator & 303-Style Sequencer</strong></p>
+<p><em>Formats: VST3, Audio Unit (AU), Standalone | macOS Universal (Mojave Intel & Apple Silicon) & Windows 64-bit</em></p>
+<hr>
+<h2>Attributions & Acknowledgements</h2>
+<p>Call & Response MIDI stands on the shoulders of creative musical innovators:</p>
+<ul>
+<li><strong>Nordl3</strong>: Deep gratitude and attribution to <strong>Nordl3</strong> for the original project concept and pioneering the algorithmic foundations of automated dual-phrase musical dialogue.</li>
+<li><strong>SideBrain</strong>: Sincere appreciation and attribution to <strong>SideBrain</strong> for his renowned Max for Live implementation, creative workflow concepts, and dedication to sharing innovative composition tools with the music production community.</li>
+</ul>
+<h3>Evolution by Viral Samples (v2.0.0)</h3>
+<p>Viral Samples evolved and expanded these foundational ideas into a native, high-performance C++/JUCE instrument for macOS and Windows:</p>
+<ul>
+<li>Full <strong>Audio Unit (AU)</strong>, <strong>VST3</strong>, and <strong>Standalone</strong> 64-bit binaries.</li>
+<li><strong>Universal macOS Binary</strong>: Native compatibility with macOS 10.14 Mojave Intel (<code>x86_64</code>) through macOS Sonoma/Sequoia & Apple Silicon (<code>arm64</code>: M1, M2, M3, M4).</li>
+<li><strong>Native Windows 64-bit Binary</strong>: Fully self-contained portable VST3 and Standalone executable with static runtime linking.</li>
+<li><strong>Brand New Ableton-Inspired Interface</strong>: Beautiful dark theme with high-contrast elements, fixed aspect-ratio scaling (<code>1180 \times 750</code>), and ergonomic workflow.</li>
+<li><strong>Interactive Top Ribbon Bar</strong>: Direct value display boxes for <code>OCT</code>, <code>KEY</code>, <code>SCALE</code>, <code>b/#</code>, <code>STEPS</code>, <code>RATE</code>, and <code>SWING</code> with dual dropdown & stepper controls.</li>
+<li><strong>Tempo-Relative Playback RATE</strong>: Choose between <code>Half speed</code>, <code>0</code> (Normal tempo sync), and <code>Double speed</code>.</li>
+<li><strong>Continuous SWING & VELOCITY Dragging</strong>: Intuitive vertical click-and-drag for seamless groove swing (<code>0\%–100\%</code>) and velocity (<code>1–127</code>).</li>
+<li><strong>Dual Phrase Lanes</strong>:</li>
+<li>Independent <strong>MUTE</strong> bypass buttons for Call and Response.</li>
+<li>Dedicated per-lane <strong>DICE</strong> mutators with modifiable <strong>MUTATE xx%</strong> depth.</li>
+<li>Per-lane <strong>LOCK</strong> padlocks protecting phrases from global regenerations.</li>
+<li>Color-coded visual harmony (Orange for Call, Teal for Response).</li>
+<li><strong>Four-Tab Inspector Panel</strong>:</li>
+<li><strong>GENERATE</strong>: Style (40 styles), Motif (24 types), Strategy (38 types), Mode, and Ending with individual vector lock padlocks.</li>
+<li><strong>SHAPE</strong>: Gate Length (<code>0.25\times–2.0\times</code>), continuous click-and-drag Velocity (<code>1–127</code>), Resolve, and Drive.</li>
+<li><strong>ARTICULATION</strong>: Accent Boost, Slide Time, Filter Cutoff (<code>60\,\text{Hz}–14\,\text{kHz}</code>), Resonance, and Decay Time.</li>
+<li><strong>OPTIONS</strong>: Routing (Channels 1–16, Combined / Split / Layered) and Timing (Sync Mode: Timeline, Restart, Free).</li>
+<li><strong>Enhanced Piano Roll</strong>: Repeatable right-edge gate resizing up to <code>4.0\times</code> note length, step auditioning with automatic mouse release stop, pitch transposition, and note editing.</li>
+<li><strong>Integrated 303 Analog Synth</strong>: Resonant low-pass filter, fast envelope decay, and saturation drive for immediate zero-latency previews.</li>
+<li><strong>8 Rapid Preset Slots (A–H)</strong>: Instant <code>Cmd+Click</code> saving, <code>Double-Click</code> loading, and right-click context menus.</li>
+<li><strong>Multi-Level Undo/Redo & Panic</strong>: 24-step non-destructive history and global All-Notes-Off MIDI Panic button.</li>
+<li><strong>Drag & Drop MIDI Export</strong>: Export generated phrases directly into DAW tracks.</li>
+</ul>
+<hr>
+<h2>Feature Summary</h2>
+<table><thead><tr>
+<th>Category</th>
+<th>Highlights</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Musical Engine</strong></td>
+<td>35 Scales (Diatonic, Pentatonic, Blues, Exotic, Arp Pools), 40 Musical Styles, 38 Response Strategies, 24 Opening Motif types.</td>
+</tr>
+<tr>
+<td><strong>Transposition</strong></td>
+<td>Real-time automatic note conforming on Key/Scale/Octave change. Preserves modal intervals and harmonic integrity.</td>
+</tr>
+<tr>
+<td><strong>Top Ribbon</strong></td>
+<td>Direct value displays for <code>OCT</code>, <code>KEY</code>, <code>SCALE</code>, <code>b/#</code>, <code>STEPS</code>, <code>RATE</code>, <code>SWING</code> with dropdown menus and stepper arrows.</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Continuous SWING (<code>0\%–100\%</code>) and VELOCITY (<code>1–127</code>) click-and-drag, tempo-relative RATE (Half, 0, Double), Density, Octave Jump.</td>
+</tr>
+<tr>
+<td><strong>Phrase Lanes</strong></td>
+<td>Independent Mute, Dice, modifiable Mutate %, Lock padlocks, Octave transpose, Inversion, Reversal, Copy, and Channel routing.</td>
+</tr>
+<tr>
+<td><strong>Piano Roll</strong></td>
+<td>Color-coded note blocks matching lane themes, repeatable right-edge gate resizing up to <code>4.0\times</code>, step auditioning auto-stop.</td>
+</tr>
+<tr>
+<td><strong>Inspector</strong></td>
+<td>4 tabs (GENERATE, SHAPE, ARTICULATION, OPTIONS) with individual parameter locks for targeted procedural composition.</td>
+</tr>
+<tr>
+<td><strong>303 Synth</strong></td>
+<td>Built-in analog-modelled sawtooth/square oscillator, resonant 24dB low-pass filter, and snappy decay envelope.</td>
+</tr>
+<tr>
+<td><strong>Presets & History</strong></td>
+<td>8 quick-recall slots (A–H) with save/load indicators, 24-step undo/redo queue, global MIDI Panic button.</td>
+</tr>
+<tr>
+<td><strong>MIDI Export</strong></td>
+<td>Drag & Drop directly into DAW arrangements with Combined, Call Only, Response Only, or Layered multi-channel routing.</td>
+</tr>
+<tr>
+<td><strong>Compatibility</strong></td>
+<td>macOS Universal (Mojave 10.14+ Intel & Apple Silicon M1–M4); Windows 10/11 (64-bit VST3 & Standalone).</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Installation & Setup</h2>
+<h3>macOS Universal Installation (Recommended)</h3>
+<p>Double-click <strong><code>Call & Response MIDI v2.0.0 Installer.pkg</code></strong> to install:</p>
+<ul>
+<li><strong>VST3 Plugin</strong>: <code>/Library/Audio/Plug-Ins/VST3/Call & Response MIDI.vst3</code></li>
+<li><strong>Audio Unit (AU)</strong>: <code>/Library/Audio/Plug-Ins/Components/Call & Response MIDI.component</code></li>
+<li><strong>User Documentation</strong>: <code>/Library/Audio/Documentation/Viral Samples/Call & Response MIDI/</code></li>
+</ul>
+<p>The installer automatically de-quarantines the files, applies code signatures, sets POSIX permissions, and flushes <code>AudioComponentRegistrar</code> so DAWs (Logic Pro, Ableton Live, FL Studio, Studio One, Cubase, Reaper) recognize the plugin immediately.</p>
+<h3>Windows Installation</h3>
+<p>Run <strong><code>Call & Response MIDI v2.0.0 Windows Setup.exe</code></strong>:</p>
+<ul>
+<li><strong>VST3 Plugin (64-bit)</strong>: <code>C:\Program Files\Common Files\VST3\Call & Response MIDI.vst3</code></li>
+<li><strong>Standalone App</strong>: <code>C:\Program Files\Viral Samples\Call & Response MIDI\Call & Response MIDI.exe</code></li>
+<li><strong>Documentation</strong>: <code>C:\Program Files\Viral Samples\Call & Response MIDI\Documentation\</code></li>
+</ul>
+<hr>
+<h2>Quick Reference / Key Commands</h2>
+<table><thead><tr>
+<th>Action</th>
+<th>Gesture / Shortcut</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Save Preset to Slot A–H</strong></td>
+<td><code>Cmd+Click</code> (or <code>Shift+Click</code> / <code>Alt+Click</code> / <code>Ctrl+Click</code>) on slot button</td>
+</tr>
+<tr>
+<td><strong>Load Preset from Slot A–H</strong></td>
+<td><code>Double-Click</code> on slot button</td>
+</tr>
+<tr>
+<td><strong>Preset Context Menu</strong></td>
+<td><code>Right-Click</code> on slot button</td>
+</tr>
+<tr>
+<td><strong>Continuous Swing Drag</strong></td>
+<td>Click and drag vertically on <code>SWING</code> display box</td>
+</tr>
+<tr>
+<td><strong>Continuous Velocity Drag</strong></td>
+<td>Click and drag vertically on <code>VELOCITY</code> display in Inspector</td>
+</tr>
+<tr>
+<td><strong>Add / Delete Note in Piano Roll</strong></td>
+<td><code>Double-Click</code> on grid cell or existing note</td>
+</tr>
+<tr>
+<td><strong>Move Note (Pitch & Step)</strong></td>
+<td>Click note center and drag horizontally or vertically</td>
+</tr>
+<tr>
+<td><strong>Resize Note Gate Duration</strong></td>
+<td>Hover right edge of note (<code>↔</code> cursor) and drag horizontally</td>
+</tr>
+<tr>
+<td><strong>Audition Step</strong></td>
+<td>Click note (audition stops automatically when mouse is released)</td>
+</tr>
+<tr>
+<td><strong>Audition Pitch</strong></td>
+<td>Click piano keys along the left edge of the Piano Roll</td>
+</tr>
+<tr>
+<td><strong>Toggle Accent / Slide</strong></td>
+<td>Right-Click note for Accent (<code>▲</code>); Alt-Click note for Slide (<code>~</code>)</td>
+</tr>
+<tr>
+<td><strong>Mute Lane</strong></td>
+<td>Click <code>MUTE</code> on CALL or RESPONSE lane</td>
+</tr>
+<tr>
+<td><strong>Lock Lane</strong></td>
+<td>Click padlock icon on CALL or RESPONSE lane header</td>
+</tr>
+<tr>
+<td><strong>Parameter Lock / Unlock</strong></td>
+<td>Click padlock icon next to Style, Strategy, Motif, Mode, or Ending in Inspector</td>
+</tr>
+<tr>
+<td><strong>Offset Notes</strong></td>
+<td>Click rectangular <code>[ < ]</code> or <code>[ > ]</code> buttons under Left Panel rotaries</td>
+</tr>
+</tbody></table>
+<hr>
+<p><em>Call & Response MIDI v2.0.0 &bull; Copyright &copy; 2026 Viral Samples. All rights reserved.</em></p>
+</div>
+</body>
+</html>

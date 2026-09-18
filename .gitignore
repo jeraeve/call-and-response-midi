@@ -1,11 +1,12 @@
 # Build outputs
 build/
 build-*/
+**/build/
+**/build-*/
 dist/
-Viral Samples - Call & Response MIDI*/
-installer/staging/
-installer/packages/
-installer/*.pkg
+**/dist/
+**/installer/staging/
+**/installer/packages/
 *.o
 *.obj
 *.a
@@ -17,6 +18,8 @@ installer/*.pkg
 # macOS metadata
 .DS_Store
 ._*
+**/.DS_Store
+**/._*
 
 # IDE & Editor files
 .vscode/

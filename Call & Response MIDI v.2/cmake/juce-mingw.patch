@@ -1,0 +1,102 @@
+diff --git a/extras/Build/CMake/JUCEUtils.cmake b/extras/Build/CMake/JUCEUtils.cmake
+index 8a6b0d6..415256d 100644
+--- a/extras/Build/CMake/JUCEUtils.cmake
++++ b/extras/Build/CMake/JUCEUtils.cmake
+@@ -1231,14 +1231,14 @@ function(_juce_set_plugin_target_properties shared_code_target kind)
+         _juce_adhoc_sign(${target_name})
+ 
+         get_target_property(vst3_auto_manifest ${shared_code_target} JUCE_VST3_AUTO_MANIFEST)
+-
+-        add_custom_command(TARGET ${target_name} POST_BUILD
+-            COMMAND ${CMAKE_COMMAND} -E echo "removing moduleinfo.json"
+-            COMMAND ${CMAKE_COMMAND} -E remove -f
+-                "${output_path}/Contents/moduleinfo.json"
+-                "${output_path}/Contents/Resources/moduleinfo.json")
+-
+         if(vst3_auto_manifest)
++            add_custom_command(TARGET ${target_name} POST_BUILD
++                COMMAND ${CMAKE_COMMAND} -E echo "removing moduleinfo.json"
++                COMMAND ${CMAKE_COMMAND} -E remove -f
++                    "${output_path}/Contents/moduleinfo.json"
++                    "${output_path}/Contents/Resources/moduleinfo.json"
++                VERBATIM)
++
+             juce_enable_vst3_manifest_step(${shared_code_target})
+         endif()
+     elseif(kind STREQUAL "VST")
+diff --git a/modules/juce_core/native/juce_SystemStats_windows.cpp b/modules/juce_core/native/juce_SystemStats_windows.cpp
+index b45716d..e0515e2 100644
+--- a/modules/juce_core/native/juce_SystemStats_windows.cpp
++++ b/modules/juce_core/native/juce_SystemStats_windows.cpp
+@@ -80,7 +80,7 @@ static int findNumberOfPhysicalCores() noexcept
+   #pragma intrinsic (__rdtsc)
+  #endif
+ 
+- #if JUCE_CLANG
++ #if JUCE_CLANG || JUCE_GCC
+ static void callCPUID (int result[4], uint32 type)
+ {
+   uint32 la = (uint32) result[0], lb = (uint32) result[1],
+diff --git a/modules/juce_graphics/image_formats/juce_JPEGLoader.cpp b/modules/juce_graphics/image_formats/juce_JPEGLoader.cpp
+index 0dc2778..de02dc2 100644
+--- a/modules/juce_graphics/image_formats/juce_JPEGLoader.cpp
++++ b/modules/juce_graphics/image_formats/juce_JPEGLoader.cpp
+@@ -143,7 +143,7 @@ namespace JPEGHelpers
+ {
+     using namespace jpeglibNamespace;
+ 
+-   #if ! (JUCE_WINDOWS && (JUCE_MSVC || JUCE_CLANG))
++   #if ! JUCE_WINDOWS
+     using jpeglibNamespace::boolean;
+    #endif
+ 
+diff --git a/modules/juce_graphics/native/juce_Direct2DResources_windows.cpp b/modules/juce_graphics/native/juce_Direct2DResources_windows.cpp
+index c9c7534..5dcbff2 100644
+--- a/modules/juce_graphics/native/juce_Direct2DResources_windows.cpp
++++ b/modules/juce_graphics/native/juce_Direct2DResources_windows.cpp
+@@ -267,7 +267,7 @@ public:
+ 
+         ComSmartPtr<IDXGIDevice> device;
+         JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wlanguage-extension-token")
+-        surface->GetDevice (__uuidof (device), (void**) device.resetAndGetPointerAddress());
++        surface->GetDevice (__uuidof (IDXGIDevice), (void**) device.resetAndGetPointerAddress());
+         JUCE_END_IGNORE_WARNINGS_GCC_LIKE
+ 
+         return findAdapter (adapters, device);
+@@ -442,7 +442,7 @@ public:
+ 
+         ComSmartPtr<IDXGIDevice> device;
+         JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wlanguage-extension-token")
+-        chain->GetDevice (__uuidof (device), (void**) device.resetAndGetPointerAddress());
++        chain->GetDevice (__uuidof (IDXGIDevice), (void**) device.resetAndGetPointerAddress());
+         JUCE_END_IGNORE_WARNINGS_GCC_LIKE
+ 
+         SharedResourcePointer<DirectX> directX;
+@@ -495,7 +495,7 @@ private:
+ 
+         ComSmartPtr<IDXGISurface> surface;
+         JUCE_BEGIN_IGNORE_WARNINGS_GCC_LIKE ("-Wlanguage-extension-token")
+-        if (const auto hr = chain->GetBuffer (0, __uuidof (surface), reinterpret_cast<void**> (surface.resetAndGetPointerAddress())); FAILED (hr))
++        if (const auto hr = chain->GetBuffer (0, __uuidof (IDXGISurface), reinterpret_cast<void**> (surface.resetAndGetPointerAddress())); FAILED (hr))
+             return nullptr;
+         JUCE_END_IGNORE_WARNINGS_GCC_LIKE
+ 
+diff --git a/modules/juce_gui_basics/native/accessibility/juce_UIATextProvider_windows.h b/modules/juce_gui_basics/native/accessibility/juce_UIATextProvider_windows.h
+index 5bb60af..dbcb5e2 100644
+--- a/modules/juce_gui_basics/native/accessibility/juce_UIATextProvider_windows.h
++++ b/modules/juce_gui_basics/native/accessibility/juce_UIATextProvider_windows.h
+@@ -35,6 +35,14 @@
+ namespace juce
+ {
+ 
++#ifndef CaretPosition_BeginningOfLine
++enum {
++    CaretPosition_Unknown = 0,
++    CaretPosition_EndOfLine = 1,
++    CaretPosition_BeginningOfLine = 2
++};
++#endif
++
+ //==============================================================================
+ class UIATextProvider  : public UIAProviderBase,
+                          public ComBaseClassHelper<ITextProvider2>
