@@ -34,10 +34,10 @@ Call & Response MIDI stands on the shoulders of creative musical innovators:
 Viral Samples evolved and expanded these foundational ideas into a native, high-performance C++/JUCE instrument for macOS and Windows:
 - **Universal macOS Binary**: Native support for **macOS Mojave 10.14+ Intel (`x86_64`)** through macOS Sonoma/Sequoia and **Apple Silicon (`arm64`: M1, M2, M3, M4)**.
 - **Native Windows 64-bit Binary**: Self-contained VST3 and Standalone `.exe` with static runtime linking.
-- **Modern Dark UI**: Complete visual redesign inspired by modern digital audio workstations with fixed aspect-ratio scaling ($1180 \times 750$).
+- **Modern Dark UI**: Complete visual redesign inspired by modern digital audio workstations with fixed aspect-ratio scaling (1180 × 750).
 - **Direct Ribbon Displays**: Value boxes for `OCT`, `KEY`, `SCALE`, `b/#`, `STEPS`, `RATE`, and `SWING` with dropdown menus and arrow steppers.
 - **Tempo-Relative RATE**: Play back at `Half speed`, `0` (Normal 16th sync), or `Double speed`.
-- **Continuous SWING & VELOCITY Dragging**: Smooth click-and-drag continuous modulation for groove swing ($0\%–100\%$) and note velocity ($1–127$).
+- **Continuous SWING & VELOCITY Dragging**: Smooth click-and-drag continuous modulation for groove swing (0% – 100%) and note velocity (1 – 127).
 - **Dual Phrase Lanes**:
   - Independent **MUTE** bypass toggles for Call and Response.
   - Dedicated per-lane **DICE** mutators with modifiable **MUTATE xx%** depth.
@@ -45,10 +45,10 @@ Viral Samples evolved and expanded these foundational ideas into a native, high-
   - Octave transpositions, phrase inversion, retrograde reversal, copy, and channel routing.
 - **Four-Tab Inspector Panel**:
   - **GENERATE**: Style (40 styles), Motif (24 types), Strategy (38 types), Mode, and Ending with individual vector lock padlocks.
-  - **SHAPE**: Gate Length ($0.25\times–2.0\times$), continuous Velocity ($1–127$), Resolve, and Drive.
-  - **ARTICULATION**: Accent Boost, Slide Time, Filter Cutoff ($60\,\text{Hz}–14\,\text{kHz}$), Resonance, and Decay Time.
+  - **SHAPE**: Gate Length (0.25× – 2.0×), continuous Velocity (1 – 127), Resolve, and Drive.
+  - **ARTICULATION**: Accent Boost, Slide Time, Filter Cutoff (60 Hz – 14 kHz), Resonance, and Decay Time.
   - **OPTIONS**: Routing (Channels 1–16, Combined / Split / Layered) and Timing (Sync Mode: Timeline, Restart, Free).
-- **Interactive Piano Roll**: Color-coded note blocks matching lane themes (Orange for Call, Teal for Response), repeatable right-edge gate resizing up to $4.0\times$, step auditioning with automatic mouse release stop, pitch transposition, and note editing.
+- **Interactive Piano Roll**: Color-coded note blocks matching lane themes (Orange for Call, Teal for Response), repeatable right-edge gate resizing up to 4.0×, step auditioning with automatic mouse release stop, pitch transposition, and note editing.
 - **8 Rapid Preset Slots (A–H)**: Instant `Cmd+Click` saving, `Double-Click` loading, and right-click context menus.
 - **Multi-Level Undo/Redo & Panic**: Non-destructive history queue and global All-Notes-Off MIDI Panic reset.
 - **Drag & Drop MIDI Export**: Export generated phrases directly into DAW arrangement tracks.

@@ -21,7 +21,7 @@ A built-in analog-modelled 303 preview synthesizer with resonant 24 dB low-pass 
 
 ## 2. What's New in Version 2.0.0
 
-- **Sleek Modern UI**: Fully overhauled dark-mode interface with refined typography, high-contrast visual cues, and fixed proportional aspect-ratio scaling ($1180 \times 750$).
+- **Sleek Modern UI**: Fully overhauled dark-mode interface with refined typography, high-contrast visual cues, and fixed proportional aspect-ratio scaling (1180 × 750).
 - **Top Ribbon Controls**:
   - Direct value displays for `OCT`, `KEY`, `SCALE`, `b/#`, `STEPS`, `RATE`, and `SWING`.
   - Double interaction paradigm: click to open dropdown selection or click the `▲` / `▼` arrow steppers.
@@ -46,12 +46,12 @@ A built-in analog-modelled 303 preview synthesizer with resonant 24 dB low-pass 
   - **Quick Tools**: Invert, Reverse, Copy, and dedicated MIDI channel routing displays.
 - **4-Tab Inspector Panel**:
   - **GENERATE**: Style (40 styles), Motif (24 types), Strategy (38 types), Mode (Call then response, Overlapped, Call solo), Ending (Resolve, Unresolved, Surprise) with individual vector lock padlocks.
-  - **SHAPE**: Gate length ($0.25\times–2.0\times$), continuous click-and-drag **VELOCITY** ($1–127$), Resolve, and Drive.
-  - **ARTICULATION**: Accent Boost, Slide Time, Filter Cutoff ($60\,\text{Hz}–14\,\text{kHz}$), Resonance, and Decay Time.
+  - **SHAPE**: Gate length (0.25× – 2.0×), continuous click-and-drag **VELOCITY** (1 – 127), Resolve, and Drive.
+  - **ARTICULATION**: Accent Boost, Slide Time, Filter Cutoff (60 Hz – 14 kHz), Resonance, and Decay Time.
   - **OPTIONS**: Routing subtab (MIDI Channels 1–16, Combined / Split / Layered) and Timing subtab (Sync Mode: Timeline, Restart, Free).
 - **Interactive Piano Roll**:
   - Matching lane note colors (Orange for Call, Teal for Response).
-  - Repeatable right-edge gate resizing up to $4.0\times$ length.
+  - Repeatable right-edge gate resizing up to 4.0× length.
   - Step auditioning with automatic sound stop on mouse release.
   - 2D pitch transposition, time shifting, and double-click note creation/deletion.
 
@@ -98,10 +98,10 @@ A built-in analog-modelled 303 preview synthesizer with resonant 24 dB low-pass 
 4. **SCALE**: 35 curated musical scales. When changed, existing notes intelligently conform to the new scale while preserving interval relationships.
 5. **STEPS**: Phrase loop length: `4`, `8`, `12`, or `16` steps.
 6. **RATE**: Tempo-relative playback speed:
-   - `Half speed`: Runs at half the host DAW tempo ($0.5\times$).
-   - `0`: Standard $1\times$ tempo sync ($1/16\text{th}$ notes at host tempo).
-   - `Double speed`: Runs at double the host DAW tempo ($2.0\times$).
-7. **SWING**: Groove swing ($0\%–100\%$). Click and drag vertically for continuous adjustments, or click the stepper buttons.
+   - `Half speed`: Runs at half the host DAW tempo (0.5×).
+   - `0`: Standard 1× tempo sync (1/16th notes at host tempo).
+   - `Double speed`: Runs at double the host DAW tempo (2.0×).
+7. **SWING**: Groove swing (0% – 100%). Click and drag vertically for continuous adjustments, or click the stepper buttons.
 8. **Preset Slots [A]–[H]**:
    - `Cmd+Click` (or `Ctrl+Click` / `Shift+Click` / `Alt+Click`): Save current pattern and settings to the slot.
    - `Double-Click`: Load pattern and settings from the slot.
@@ -120,7 +120,7 @@ A built-in analog-modelled 303 preview synthesizer with resonant 24 dB low-pass 
 3. **Performance Knobs**:
    - **DENSITY**: Adjusts the rhythmic population of notes without disrupting key downbeats.
    - **MUTATE**: Governs mutation intensity applied during generative variations.
-   - **OCT JUMP**: Injects classic 303-style octave leaps ($\pm 12$, $+24$ semitones).
+   - **OCT JUMP**: Injects classic 303-style octave leaps (±12, +24 semitones).
 4. **`[ < ] OFFSET [ > ]`**: Rectangular buttons that shift all notes in the active phrases left or right by one step.
 
 ---
@@ -151,7 +151,7 @@ Each lane controls its phrase independently:
 - **Vector Lock Padlocks**: Click any padlock icon to freeze that parameter during master DICE re-rolls.
 
 #### Tab 2: SHAPE
-- **Gate Length**: Global note length multiplier ($0.25\times$ staccato to $2.0\times$ legato).
+- **Gate Length**: Global note length multiplier (0.25× staccato to 2.0× legato).
 - **Velocity**: Click and drag vertically to smoothly set note velocity between `1` and `127`.
 - **Resolve**: Strength of harmonic pull toward tonic root notes on cadence points.
 - **Drive**: Saturation drive applied to the internal 303 synth filter stage.
@@ -159,9 +159,9 @@ Each lane controls its phrase independently:
 #### Tab 3: ARTICULATION
 - **Accent Boost**: Volume and filter envelope boost applied to accented steps.
 - **Slide Time**: Portamento glide time between tied or slurred notes.
-- **Filter Cutoff**: 303 low-pass filter frequency ($60\,\text{Hz}$ to $14\,\text{kHz}$).
+- **Filter Cutoff**: 303 low-pass filter frequency (60 Hz to 14 kHz).
 - **Resonance**: Peak resonance emphasizing classic squelchy acid harmonics.
-- **Decay Time**: Envelope decay duration ($0.05\,\text{s}$ to $1.5\,\text{s}$).
+- **Decay Time**: Envelope decay duration (0.05 s to 1.5 s).
 
 #### Tab 4: OPTIONS
 - **Routing Subtab**:
@@ -180,7 +180,7 @@ Each lane controls its phrase independently:
 - **Visual Clarity**: Call notes appear in vibrant orange; Response notes appear in bright cyan/teal.
 - **Add / Delete Notes**: Double-click any empty grid cell to add a note; double-click an existing note to delete it.
 - **Move Notes**: Click and drag any note horizontally to shift steps or vertically to transpose pitch.
-- **Resize Gate Duration**: Hover over the right edge of any note (the cursor transforms to `↔`) and drag horizontally. Notes can be lengthened or shortened repeatedly up to $4.0\times$.
+- **Resize Gate Duration**: Hover over the right edge of any note (the cursor transforms to `↔`) and drag horizontally. Notes can be lengthened or shortened repeatedly up to 4.0×.
 - **Audition Steps**: Click on any note to audition its sound through the internal synth. Auditioning automatically ceases immediately upon mouse release.
 - **Piano Keyboard**: Click the piano keys on the left margin to audition individual pitches.
 - **Accent & Slide**: Right-click a note to toggle Accent (marked with `▲`); Alt-click a note to toggle Slide (marked with `~`).
@@ -224,7 +224,7 @@ A: Ensure you ran the official `.pkg` installer. On macOS, run `killall -9 Audio
 A: Click **PREVIEW: ON** in the top ribbon so it toggles to **PREVIEW: MUTED**. Route the MIDI output of the Call & Response track to your desired software synth track in your DAW.
 
 **Q: My DAW's tempo changes, how does RATE respond?**  
-A: Call & Response MIDI automatically locks to host tempo. When `RATE` is set to `0`, phrases run in standard $1/16\text{th}$ note sync. Set to `Half speed` for half-time grooves or `Double speed` for drum & bass / double-time arpeggios.
+A: Call & Response MIDI automatically locks to host tempo. When `RATE` is set to `0`, phrases run in standard 1/16th note sync. Set to `Half speed` for half-time grooves or `Double speed` for drum & bass / double-time arpeggios.
 
 **Q: How do I prevent my custom Call phrase from changing when clicking DICE?**  
 A: Click the **LOCK** padlock on the CALL lane header. The Call melody will remain completely intact while the master DICE or lane DICE rolls the Response.

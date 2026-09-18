@@ -12,7 +12,6 @@
     --text: #e2e8f0;
     --text-muted: #94a3b8;
     --cyan: #00d2ff;
-    --cyan-glow: rgba(0, 210, 255, 0.15);
     --orange: #ff9f43;
     --code-bg: #0a0c10;
     --table-stripe: #1e2230;
@@ -40,7 +39,6 @@
     margin-bottom: 12px;
     border-bottom: 2px solid var(--cyan);
     padding-bottom: 10px;
-    break-after: avoid;
   }
   h2 {
     color: #fff;
@@ -49,21 +47,18 @@
     margin-bottom: 14px;
     border-left: 4px solid var(--cyan);
     padding-left: 12px;
-    break-after: avoid;
   }
   h3 {
     color: var(--cyan);
     font-size: 1.15rem;
     margin-top: 22px;
     margin-bottom: 8px;
-    break-after: avoid;
   }
   h4 {
     color: var(--orange);
     font-size: 1.02rem;
     margin-top: 16px;
     margin-bottom: 6px;
-    break-after: avoid;
   }
   p {
     margin-bottom: 14px;
@@ -85,6 +80,7 @@
   }
   li {
     margin-bottom: 6px;
+    color: var(--text);
   }
   code {
     background: var(--code-bg);
@@ -133,27 +129,10 @@
     padding: 10px 16px;
     border-bottom: 1px solid var(--border);
     vertical-align: top;
+    color: var(--text);
   }
   tr:nth-child(even) {
     background: var(--table-stripe);
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-  @media print {
-    body { background: #fff; color: #111; padding: 0; }
-    .container { background: #fff; border: none; box-shadow: none; padding: 20px; max-width: 100%; }
-    h1 { color: #000; border-bottom: 2px solid #0099cc; }
-    h2 { color: #111; border-left: 4px solid #0099cc; }
-    h3 { color: #0077aa; }
-    h4 { color: #cc6600; }
-    strong { color: #000; }
-    th { background: #f0f4f8; color: #0077aa; border-bottom: 2px solid #ccc; }
-    tr:nth-child(even) { background: #f9fbfd; }
-    td, table { border-color: #ddd; }
-    code { background: #f1f5f9; color: #0077aa; border-color: #cbd5e1; }
-    pre { background: #f8fafc; border-color: #cbd5e1; }
-    pre code { color: #334155; }
   }
 </style>
 </head>
@@ -175,10 +154,10 @@
 <li>Full <strong>Audio Unit (AU)</strong>, <strong>VST3</strong>, and <strong>Standalone</strong> 64-bit binaries.</li>
 <li><strong>Universal macOS Binary</strong>: Native compatibility with macOS 10.14 Mojave Intel (<code>x86_64</code>) through macOS Sonoma/Sequoia & Apple Silicon (<code>arm64</code>: M1, M2, M3, M4).</li>
 <li><strong>Native Windows 64-bit Binary</strong>: Fully self-contained portable VST3 and Standalone executable with static runtime linking.</li>
-<li><strong>Brand New Ableton-Inspired Interface</strong>: Beautiful dark theme with high-contrast elements, fixed aspect-ratio scaling (<code>1180 \times 750</code>), and ergonomic workflow.</li>
+<li><strong>Brand New Ableton-Inspired Interface</strong>: Beautiful dark theme with high-contrast elements, fixed aspect-ratio scaling (1180 × 750), and ergonomic workflow.</li>
 <li><strong>Interactive Top Ribbon Bar</strong>: Direct value display boxes for <code>OCT</code>, <code>KEY</code>, <code>SCALE</code>, <code>b/#</code>, <code>STEPS</code>, <code>RATE</code>, and <code>SWING</code> with dual dropdown & stepper controls.</li>
 <li><strong>Tempo-Relative Playback RATE</strong>: Choose between <code>Half speed</code>, <code>0</code> (Normal tempo sync), and <code>Double speed</code>.</li>
-<li><strong>Continuous SWING & VELOCITY Dragging</strong>: Intuitive vertical click-and-drag for seamless groove swing (<code>0\%–100\%</code>) and velocity (<code>1–127</code>).</li>
+<li><strong>Continuous SWING & VELOCITY Dragging</strong>: Intuitive vertical click-and-drag for seamless groove swing (0% – 100%) and velocity (1 – 127).</li>
 <li><strong>Dual Phrase Lanes</strong>:</li>
 <li>Independent <strong>MUTE</strong> bypass buttons for Call and Response.</li>
 <li>Dedicated per-lane <strong>DICE</strong> mutators with modifiable <strong>MUTATE xx%</strong> depth.</li>
@@ -186,10 +165,10 @@
 <li>Color-coded visual harmony (Orange for Call, Teal for Response).</li>
 <li><strong>Four-Tab Inspector Panel</strong>:</li>
 <li><strong>GENERATE</strong>: Style (40 styles), Motif (24 types), Strategy (38 types), Mode, and Ending with individual vector lock padlocks.</li>
-<li><strong>SHAPE</strong>: Gate Length (<code>0.25\times–2.0\times</code>), continuous click-and-drag Velocity (<code>1–127</code>), Resolve, and Drive.</li>
-<li><strong>ARTICULATION</strong>: Accent Boost, Slide Time, Filter Cutoff (<code>60\,\text{Hz}–14\,\text{kHz}</code>), Resonance, and Decay Time.</li>
+<li><strong>SHAPE</strong>: Gate Length (0.25× – 2.0×), continuous click-and-drag Velocity (1 – 127), Resolve, and Drive.</li>
+<li><strong>ARTICULATION</strong>: Accent Boost, Slide Time, Filter Cutoff (60 Hz – 14 kHz), Resonance, and Decay Time.</li>
 <li><strong>OPTIONS</strong>: Routing (Channels 1–16, Combined / Split / Layered) and Timing (Sync Mode: Timeline, Restart, Free).</li>
-<li><strong>Enhanced Piano Roll</strong>: Repeatable right-edge gate resizing up to <code>4.0\times</code> note length, step auditioning with automatic mouse release stop, pitch transposition, and note editing.</li>
+<li><strong>Enhanced Piano Roll</strong>: Repeatable right-edge gate resizing up to 4.0× note length, step auditioning with automatic mouse release stop, pitch transposition, and note editing.</li>
 <li><strong>Integrated 303 Analog Synth</strong>: Resonant low-pass filter, fast envelope decay, and saturation drive for immediate zero-latency previews.</li>
 <li><strong>8 Rapid Preset Slots (A–H)</strong>: Instant <code>Cmd+Click</code> saving, <code>Double-Click</code> loading, and right-click context menus.</li>
 <li><strong>Multi-Level Undo/Redo & Panic</strong>: 24-step non-destructive history and global All-Notes-Off MIDI Panic button.</li>
@@ -215,7 +194,7 @@
 </tr>
 <tr>
 <td><strong>Performance</strong></td>
-<td>Continuous SWING (<code>0\%–100\%</code>) and VELOCITY (<code>1–127</code>) click-and-drag, tempo-relative RATE (Half, 0, Double), Density, Octave Jump.</td>
+<td>Continuous SWING (0% – 100%) and VELOCITY (1 – 127) click-and-drag, tempo-relative RATE (Half, 0, Double), Density, Octave Jump.</td>
 </tr>
 <tr>
 <td><strong>Phrase Lanes</strong></td>
@@ -223,7 +202,7 @@
 </tr>
 <tr>
 <td><strong>Piano Roll</strong></td>
-<td>Color-coded note blocks matching lane themes, repeatable right-edge gate resizing up to <code>4.0\times</code>, step auditioning auto-stop.</td>
+<td>Color-coded note blocks matching lane themes, repeatable right-edge gate resizing up to 4.0×, step auditioning auto-stop.</td>
 </tr>
 <tr>
 <td><strong>Inspector</strong></td>

@@ -12,7 +12,6 @@
     --text: #e2e8f0;
     --text-muted: #94a3b8;
     --cyan: #00d2ff;
-    --cyan-glow: rgba(0, 210, 255, 0.15);
     --orange: #ff9f43;
     --code-bg: #0a0c10;
     --table-stripe: #1e2230;
@@ -40,7 +39,6 @@
     margin-bottom: 12px;
     border-bottom: 2px solid var(--cyan);
     padding-bottom: 10px;
-    break-after: avoid;
   }
   h2 {
     color: #fff;
@@ -49,21 +47,18 @@
     margin-bottom: 14px;
     border-left: 4px solid var(--cyan);
     padding-left: 12px;
-    break-after: avoid;
   }
   h3 {
     color: var(--cyan);
     font-size: 1.15rem;
     margin-top: 22px;
     margin-bottom: 8px;
-    break-after: avoid;
   }
   h4 {
     color: var(--orange);
     font-size: 1.02rem;
     margin-top: 16px;
     margin-bottom: 6px;
-    break-after: avoid;
   }
   p {
     margin-bottom: 14px;
@@ -85,6 +80,7 @@
   }
   li {
     margin-bottom: 6px;
+    color: var(--text);
   }
   code {
     background: var(--code-bg);
@@ -133,27 +129,10 @@
     padding: 10px 16px;
     border-bottom: 1px solid var(--border);
     vertical-align: top;
+    color: var(--text);
   }
   tr:nth-child(even) {
     background: var(--table-stripe);
-  }
-  tr:last-child td {
-    border-bottom: none;
-  }
-  @media print {
-    body { background: #fff; color: #111; padding: 0; }
-    .container { background: #fff; border: none; box-shadow: none; padding: 20px; max-width: 100%; }
-    h1 { color: #000; border-bottom: 2px solid #0099cc; }
-    h2 { color: #111; border-left: 4px solid #0099cc; }
-    h3 { color: #0077aa; }
-    h4 { color: #cc6600; }
-    strong { color: #000; }
-    th { background: #f0f4f8; color: #0077aa; border-bottom: 2px solid #ccc; }
-    tr:nth-child(even) { background: #f9fbfd; }
-    td, table { border-color: #ddd; }
-    code { background: #f1f5f9; color: #0077aa; border-color: #cbd5e1; }
-    pre { background: #f8fafc; border-color: #cbd5e1; }
-    pre code { color: #334155; }
   }
 </style>
 </head>
@@ -175,7 +154,7 @@
 <hr>
 <h2>2. What's New in Version 2.0.0</h2>
 <ul>
-<li><strong>Sleek Modern UI</strong>: Fully overhauled dark-mode interface with refined typography, high-contrast visual cues, and fixed proportional aspect-ratio scaling (<code>1180 \times 750</code>).</li>
+<li><strong>Sleek Modern UI</strong>: Fully overhauled dark-mode interface with refined typography, high-contrast visual cues, and fixed proportional aspect-ratio scaling (1180 × 750).</li>
 <li><strong>Top Ribbon Controls</strong>:</li>
 <li>Direct value displays for <code>OCT</code>, <code>KEY</code>, <code>SCALE</code>, <code>b/#</code>, <code>STEPS</code>, <code>RATE</code>, and <code>SWING</code>.</li>
 <li>Double interaction paradigm: click to open dropdown selection or click the <code>▲</code> / <code>▼</code> arrow steppers.</li>
@@ -200,12 +179,12 @@
 <li><strong>Quick Tools</strong>: Invert, Reverse, Copy, and dedicated MIDI channel routing displays.</li>
 <li><strong>4-Tab Inspector Panel</strong>:</li>
 <li><strong>GENERATE</strong>: Style (40 styles), Motif (24 types), Strategy (38 types), Mode (Call then response, Overlapped, Call solo), Ending (Resolve, Unresolved, Surprise) with individual vector lock padlocks.</li>
-<li><strong>SHAPE</strong>: Gate length (<code>0.25\times–2.0\times</code>), continuous click-and-drag <strong>VELOCITY</strong> (<code>1–127</code>), Resolve, and Drive.</li>
-<li><strong>ARTICULATION</strong>: Accent Boost, Slide Time, Filter Cutoff (<code>60\,\text{Hz}–14\,\text{kHz}</code>), Resonance, and Decay Time.</li>
+<li><strong>SHAPE</strong>: Gate length (0.25× – 2.0×), continuous click-and-drag <strong>VELOCITY</strong> (1 – 127), Resolve, and Drive.</li>
+<li><strong>ARTICULATION</strong>: Accent Boost, Slide Time, Filter Cutoff (60 Hz – 14 kHz), Resonance, and Decay Time.</li>
 <li><strong>OPTIONS</strong>: Routing subtab (MIDI Channels 1–16, Combined / Split / Layered) and Timing subtab (Sync Mode: Timeline, Restart, Free).</li>
 <li><strong>Interactive Piano Roll</strong>:</li>
 <li>Matching lane note colors (Orange for Call, Teal for Response).</li>
-<li>Repeatable right-edge gate resizing up to <code>4.0\times</code> length.</li>
+<li>Repeatable right-edge gate resizing up to 4.0× length.</li>
 <li>Step auditioning with automatic sound stop on mouse release.</li>
 <li>2D pitch transposition, time shifting, and double-click note creation/deletion.</li>
 </ul>
@@ -248,11 +227,11 @@
 <p>5. <strong>STEPS</strong>: Phrase loop length: <code>4</code>, <code>8</code>, <code>12</code>, or <code>16</code> steps.</p>
 <p>6. <strong>RATE</strong>: Tempo-relative playback speed:</p>
 <ul>
-<li><code>Half speed</code>: Runs at half the host DAW tempo (<code>0.5\times</code>).</li>
-<li><code>0</code>: Standard <code>1\times</code> tempo sync (<code>1/16\text{th}</code> notes at host tempo).</li>
-<li><code>Double speed</code>: Runs at double the host DAW tempo (<code>2.0\times</code>).</li>
+<li><code>Half speed</code>: Runs at half the host DAW tempo (0.5×).</li>
+<li><code>0</code>: Standard 1× tempo sync (1/16th notes at host tempo).</li>
+<li><code>Double speed</code>: Runs at double the host DAW tempo (2.0×).</li>
 </ul>
-<p>7. <strong>SWING</strong>: Groove swing (<code>0\%–100\%</code>). Click and drag vertically for continuous adjustments, or click the stepper buttons.</p>
+<p>7. <strong>SWING</strong>: Groove swing (0% – 100%). Click and drag vertically for continuous adjustments, or click the stepper buttons.</p>
 <p>8. <strong>Preset Slots [A]–[H]</strong>:</p>
 <ul>
 <li><code>Cmd+Click</code> (or <code>Ctrl+Click</code> / <code>Shift+Click</code> / <code>Alt+Click</code>): Save current pattern and settings to the slot.</li>
@@ -271,7 +250,7 @@
 <ul>
 <li><strong>DENSITY</strong>: Adjusts the rhythmic population of notes without disrupting key downbeats.</li>
 <li><strong>MUTATE</strong>: Governs mutation intensity applied during generative variations.</li>
-<li><strong>OCT JUMP</strong>: Injects classic 303-style octave leaps (<code>\pm 12</code>, <code>+24</code> semitones).</li>
+<li><strong>OCT JUMP</strong>: Injects classic 303-style octave leaps (±12, +24 semitones).</li>
 </ul>
 <p>4. <strong><code>[ < ] OFFSET [ > ]</code></strong>: Rectangular buttons that shift all notes in the active phrases left or right by one step.</p>
 <hr>
@@ -301,7 +280,7 @@
 </ul>
 <h4>Tab 2: SHAPE</h4>
 <ul>
-<li><strong>Gate Length</strong>: Global note length multiplier (<code>0.25\times</code> staccato to <code>2.0\times</code> legato).</li>
+<li><strong>Gate Length</strong>: Global note length multiplier (0.25× staccato to 2.0× legato).</li>
 <li><strong>Velocity</strong>: Click and drag vertically to smoothly set note velocity between <code>1</code> and <code>127</code>.</li>
 <li><strong>Resolve</strong>: Strength of harmonic pull toward tonic root notes on cadence points.</li>
 <li><strong>Drive</strong>: Saturation drive applied to the internal 303 synth filter stage.</li>
@@ -310,9 +289,9 @@
 <ul>
 <li><strong>Accent Boost</strong>: Volume and filter envelope boost applied to accented steps.</li>
 <li><strong>Slide Time</strong>: Portamento glide time between tied or slurred notes.</li>
-<li><strong>Filter Cutoff</strong>: 303 low-pass filter frequency (<code>60\,\text{Hz}</code> to <code>14\,\text{kHz}</code>).</li>
+<li><strong>Filter Cutoff</strong>: 303 low-pass filter frequency (60 Hz to 14 kHz).</li>
 <li><strong>Resonance</strong>: Peak resonance emphasizing classic squelchy acid harmonics.</li>
-<li><strong>Decay Time</strong>: Envelope decay duration (<code>0.05\,\text{s}</code> to <code>1.5\,\text{s}</code>).</li>
+<li><strong>Decay Time</strong>: Envelope decay duration (0.05 s to 1.5 s).</li>
 </ul>
 <h4>Tab 4: OPTIONS</h4>
 <ul>
@@ -331,7 +310,7 @@
 <li><strong>Visual Clarity</strong>: Call notes appear in vibrant orange; Response notes appear in bright cyan/teal.</li>
 <li><strong>Add / Delete Notes</strong>: Double-click any empty grid cell to add a note; double-click an existing note to delete it.</li>
 <li><strong>Move Notes</strong>: Click and drag any note horizontally to shift steps or vertically to transpose pitch.</li>
-<li><strong>Resize Gate Duration</strong>: Hover over the right edge of any note (the cursor transforms to <code>↔</code>) and drag horizontally. Notes can be lengthened or shortened repeatedly up to <code>4.0\times</code>.</li>
+<li><strong>Resize Gate Duration</strong>: Hover over the right edge of any note (the cursor transforms to <code>↔</code>) and drag horizontally. Notes can be lengthened or shortened repeatedly up to 4.0×.</li>
 <li><strong>Audition Steps</strong>: Click on any note to audition its sound through the internal synth. Auditioning automatically ceases immediately upon mouse release.</li>
 <li><strong>Piano Keyboard</strong>: Click the piano keys on the left margin to audition individual pitches.</li>
 <li><strong>Accent & Slide</strong>: Right-click a note to toggle Accent (marked with <code>▲</code>); Alt-click a note to toggle Slide (marked with <code>~</code>).</li>
@@ -370,7 +349,7 @@
 <p><strong>Q: How do I mute the internal synth and use external instruments?</strong></p>
 <p>A: Click <strong>PREVIEW: ON</strong> in the top ribbon so it toggles to <strong>PREVIEW: MUTED</strong>. Route the MIDI output of the Call & Response track to your desired software synth track in your DAW.</p>
 <p><strong>Q: My DAW's tempo changes, how does RATE respond?</strong></p>
-<p>A: Call & Response MIDI automatically locks to host tempo. When <code>RATE</code> is set to <code>0</code>, phrases run in standard <code>1/16\text{th}</code> note sync. Set to <code>Half speed</code> for half-time grooves or <code>Double speed</code> for drum & bass / double-time arpeggios.</p>
+<p>A: Call & Response MIDI automatically locks to host tempo. When <code>RATE</code> is set to <code>0</code>, phrases run in standard 1/16th note sync. Set to <code>Half speed</code> for half-time grooves or <code>Double speed</code> for drum & bass / double-time arpeggios.</p>
 <p><strong>Q: How do I prevent my custom Call phrase from changing when clicking DICE?</strong></p>
 <p>A: Click the <strong>LOCK</strong> padlock on the CALL lane header. The Call melody will remain completely intact while the master DICE or lane DICE rolls the Response.</p>
 <hr>

@@ -4,17 +4,24 @@ import html
 import subprocess
 import os
 
+def clean_latex(text):
+    t = text
+    t = t.replace(r"\times", "×")
+    t = t.replace(r"\pm", "±")
+    t = t.replace(r"\,", " ")
+    t = re.sub(r"\\text\{([^}]+)\}", r"\1", t)
+    t = t.replace("$", "")
+    return t
+
 def md_to_html_body(md_text):
     lines = md_text.splitlines()
     html_lines = []
     in_list = False
     in_table = False
-    table_headers = []
     in_code = False
     code_lines = []
     
     for line in lines:
-        # Code blocks
         if line.strip().startswith("```"):
             if in_code:
                 in_code = False
@@ -82,7 +89,7 @@ def md_to_html_body(md_text):
         if stripped.startswith("|") and stripped.endswith("|"):
             cells = [c.strip() for c in stripped[1:-1].split("|")]
             if all(set(c).issubset({'-', ':', ' '}) for c in cells):
-                continue # separator
+                continue
             if not in_table:
                 if in_list: html_lines.append("</ul>"); in_list = False
                 in_table = True
@@ -125,22 +132,174 @@ def md_to_html_body(md_text):
     return "\n".join(html_lines)
 
 def inline_fmt(text):
-    # escape basic html
-    # But preserve formatting
-    t = text
-    # bold italic
+    t = clean_latex(text)
     t = re.sub(r'\*\*\*(.*?)\*\*\*', r'<strong><em>\1</em></strong>', t)
-    # bold
     t = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', t)
-    # italic
     t = re.sub(r'\*(.*?)\*', r'<em>\1</em>', t)
-    # code
     t = re.sub(r'`(.*?)`', r'<code>\1</code>', t)
-    # math
-    t = re.sub(r'\$(.*?)\$', r'<code>\1</code>', t)
     return t
 
-HTML_TEMPLATE = """<!DOCTYPE html>
+# Dedicated High-Contrast Print / PDF Template
+PDF_PRINT_TEMPLATE = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>{title}</title>
+<style>
+  @page {{
+    size: A4 portrait;
+    margin: 18mm 16mm 18mm 16mm;
+  }}
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+  body {{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: #ffffff;
+    color: #0f172a;
+    font-size: 10pt;
+    line-height: 1.55;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }}
+  .container {{
+    max-width: 100%;
+    margin: 0 auto;
+    background: #ffffff;
+  }}
+  h1 {{
+    color: #0f172a;
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    border-bottom: 2.5px solid #0284c7;
+    padding-bottom: 8px;
+    break-after: avoid;
+    page-break-after: avoid;
+  }}
+  h2 {{
+    color: #0f172a;
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    border-left: 4px solid #0284c7;
+    padding-left: 10px;
+    break-after: avoid;
+    page-break-after: avoid;
+  }}
+  h3 {{
+    color: #0369a1;
+    font-size: 1.08rem;
+    font-weight: 700;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    break-after: avoid;
+    page-break-after: avoid;
+  }}
+  h4 {{
+    color: #c2410c;
+    font-size: 0.98rem;
+    font-weight: 600;
+    margin-top: 12px;
+    margin-bottom: 4px;
+    break-after: avoid;
+    page-break-after: avoid;
+  }}
+  p {{
+    margin-bottom: 10px;
+    color: #1e293b;
+    font-size: 10pt;
+  }}
+  strong {{
+    color: #0f172a;
+    font-weight: 700;
+  }}
+  em {{
+    color: #334155;
+  }}
+  hr {{
+    border: 0;
+    height: 1px;
+    background: #cbd5e1;
+    margin: 18px 0;
+  }}
+  ul {{
+    margin-left: 20px;
+    margin-bottom: 12px;
+  }}
+  li {{
+    margin-bottom: 4px;
+    color: #1e293b;
+  }}
+  code {{
+    background: #f1f5f9;
+    color: #0369a1;
+    padding: 1.5px 5px;
+    border-radius: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.88em;
+    font-weight: 600;
+    border: 1px solid #cbd5e1;
+  }}
+  pre {{
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 12px 16px;
+    overflow-x: auto;
+    margin-bottom: 14px;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }}
+  pre code {{
+    background: transparent;
+    border: none;
+    padding: 0;
+    color: #0f172a;
+    font-size: 0.88em;
+    font-weight: 400;
+    display: block;
+    line-height: 1.45;
+  }}
+  table {{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 14px 0;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 9.2pt;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }}
+  th {{
+    background: #f1f5f9;
+    color: #0f172a;
+    text-align: left;
+    padding: 8px 12px;
+    border: 1px solid #cbd5e1;
+    border-bottom: 2px solid #94a3b8;
+    font-weight: 700;
+  }}
+  td {{
+    padding: 7px 12px;
+    border: 1px solid #e2e8f0;
+    color: #1e293b;
+    vertical-align: top;
+  }}
+  tr:nth-child(even) td {{
+    background: #f8fafc;
+  }}
+</style>
+</head>
+<body>
+<div class="container">
+{content}
+</div>
+</body>
+</html>
+"""
+
+# Dark Mode Interactive HTML Template for Web Browsing
+WEB_HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -154,7 +313,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     --text: #e2e8f0;
     --text-muted: #94a3b8;
     --cyan: #00d2ff;
-    --cyan-glow: rgba(0, 210, 255, 0.15);
     --orange: #ff9f43;
     --code-bg: #0a0c10;
     --table-stripe: #1e2230;
@@ -182,7 +340,6 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     margin-bottom: 12px;
     border-bottom: 2px solid var(--cyan);
     padding-bottom: 10px;
-    break-after: avoid;
   }}
   h2 {{
     color: #fff;
@@ -191,21 +348,18 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     margin-bottom: 14px;
     border-left: 4px solid var(--cyan);
     padding-left: 12px;
-    break-after: avoid;
   }}
   h3 {{
     color: var(--cyan);
     font-size: 1.15rem;
     margin-top: 22px;
     margin-bottom: 8px;
-    break-after: avoid;
   }}
   h4 {{
     color: var(--orange);
     font-size: 1.02rem;
     margin-top: 16px;
     margin-bottom: 6px;
-    break-after: avoid;
   }}
   p {{
     margin-bottom: 14px;
@@ -227,6 +381,7 @@ HTML_TEMPLATE = """<!DOCTYPE html>
   }}
   li {{
     margin-bottom: 6px;
+    color: var(--text);
   }}
   code {{
     background: var(--code-bg);
@@ -275,27 +430,10 @@ HTML_TEMPLATE = """<!DOCTYPE html>
     padding: 10px 16px;
     border-bottom: 1px solid var(--border);
     vertical-align: top;
+    color: var(--text);
   }}
   tr:nth-child(even) {{
     background: var(--table-stripe);
-  }}
-  tr:last-child td {{
-    border-bottom: none;
-  }}
-  @media print {{
-    body {{ background: #fff; color: #111; padding: 0; }}
-    .container {{ background: #fff; border: none; box-shadow: none; padding: 20px; max-width: 100%; }}
-    h1 {{ color: #000; border-bottom: 2px solid #0099cc; }}
-    h2 {{ color: #111; border-left: 4px solid #0099cc; }}
-    h3 {{ color: #0077aa; }}
-    h4 {{ color: #cc6600; }}
-    strong {{ color: #000; }}
-    th {{ background: #f0f4f8; color: #0077aa; border-bottom: 2px solid #ccc; }}
-    tr:nth-child(even) {{ background: #f9fbfd; }}
-    td, table {{ border-color: #ddd; }}
-    code {{ background: #f1f5f9; color: #0077aa; border-color: #cbd5e1; }}
-    pre {{ background: #f8fafc; border-color: #cbd5e1; }}
-    pre code {{ color: #334155; }}
   }}
 </style>
 </head>
@@ -310,7 +448,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 def generate_docs():
     base_dir = "/Volumes/Dock HD/Antigravity Projects/Call & Response MIDI/Call & Response MIDI v.2"
     doc_dir = os.path.join(base_dir, "Documentation")
+    release_dir = os.path.join(base_dir, "Viral Samples - Call & Response MIDI v2.0.0 (MAC:WIN)")
     os.makedirs(doc_dir, exist_ok=True)
+    os.makedirs(release_dir, exist_ok=True)
     
     # 1. User Manual
     manual_md_path = os.path.join(base_dir, "Call_and_Response_MIDI_User_Manual.md")
@@ -318,15 +458,21 @@ def generate_docs():
         manual_md = f.read()
     
     manual_body = md_to_html_body(manual_md)
-    manual_html = HTML_TEMPLATE.format(title="Call & Response MIDI — User Manual (v2.0.0)", content=manual_body)
+    manual_web_html = WEB_HTML_TEMPLATE.format(title="Call & Response MIDI — User Manual (v2.0.0)", content=manual_body)
+    manual_pdf_html = PDF_PRINT_TEMPLATE.format(title="Call & Response MIDI — User Manual (v2.0.0)", content=manual_body)
     
-    manual_html_path1 = os.path.join(base_dir, "Call_and_Response_MIDI_User_Manual.html")
-    manual_html_path2 = os.path.join(doc_dir, "Call_and_Response_MIDI_User_Manual.html")
-    manual_html_path3 = os.path.join(doc_dir, "User_Manual.html")
-    
-    for p in [manual_html_path1, manual_html_path2, manual_html_path3]:
+    for p in [
+        os.path.join(base_dir, "Call_and_Response_MIDI_User_Manual.html"),
+        os.path.join(doc_dir, "Call_and_Response_MIDI_User_Manual.html"),
+        os.path.join(doc_dir, "User_Manual.html"),
+        os.path.join(release_dir, "Call_and_Response_MIDI_User_Manual.html"),
+    ]:
         with open(p, "w", encoding="utf-8") as f:
-            f.write(manual_html)
+            f.write(manual_web_html)
+            
+    manual_print_path = os.path.join(base_dir, "User_Manual_Print.html")
+    with open(manual_print_path, "w", encoding="utf-8") as f:
+        f.write(manual_pdf_html)
     print("Generated User Manual HTMLs.")
 
     # 2. Read Me
@@ -335,13 +481,20 @@ def generate_docs():
         readme_md = f.read()
         
     readme_body = md_to_html_body(readme_md)
-    readme_html = HTML_TEMPLATE.format(title="Call & Response MIDI — Read Me (v2.0.0)", content=readme_body)
+    readme_web_html = WEB_HTML_TEMPLATE.format(title="Call & Response MIDI — Read Me (v2.0.0)", content=readme_body)
+    readme_pdf_html = PDF_PRINT_TEMPLATE.format(title="Call & Response MIDI — Read Me (v2.0.0)", content=readme_body)
     
-    readme_html_path1 = os.path.join(base_dir, "Read_Me.html")
-    readme_html_path2 = os.path.join(doc_dir, "Read_Me.html")
-    for p in [readme_html_path1, readme_html_path2]:
+    for p in [
+        os.path.join(base_dir, "Read_Me.html"),
+        os.path.join(doc_dir, "Read_Me.html"),
+        os.path.join(release_dir, "Read_Me.html"),
+    ]:
         with open(p, "w", encoding="utf-8") as f:
-            f.write(readme_html)
+            f.write(readme_web_html)
+            
+    readme_print_path = os.path.join(base_dir, "Read_Me_Print.html")
+    with open(readme_print_path, "w", encoding="utf-8") as f:
+        f.write(readme_pdf_html)
     print("Generated Read Me HTMLs.")
 
     # 3. Read Me.txt
@@ -414,43 +567,69 @@ Offset Notes            : Click [ < ] or [ > ] buttons under rotaries
 
 Copyright (c) 2026 Viral Samples. All rights reserved.
 """
-    readme_txt_path1 = os.path.join(base_dir, "Read Me.txt")
-    readme_txt_path2 = os.path.join(doc_dir, "Read Me.txt")
-    for p in [readme_txt_path1, readme_txt_path2]:
+    for p in [
+        os.path.join(base_dir, "Read Me.txt"),
+        os.path.join(doc_dir, "Read Me.txt"),
+        os.path.join(release_dir, "Read Me.txt"),
+    ]:
         with open(p, "w", encoding="utf-8") as f:
             f.write(txt_content)
     print("Generated Read Me TXTs.")
 
-    # 4. Render PDFs with Headless Chrome
+    # 4. Sync Markdown files
+    for p in [
+        os.path.join(doc_dir, "Call_and_Response_MIDI_User_Manual.md"),
+        os.path.join(release_dir, "Call_and_Response_MIDI_User_Manual.md"),
+    ]:
+        with open(p, "w", encoding="utf-8") as f:
+            f.write(manual_md)
+            
+    for p in [
+        os.path.join(doc_dir, "Read Me.md"),
+        os.path.join(release_dir, "Read Me.md"),
+    ]:
+        with open(p, "w", encoding="utf-8") as f:
+            f.write(readme_md)
+
+    # 5. Render PDFs with Headless Chrome from High-Contrast Print templates
     chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     if os.path.exists(chrome):
-        print("Rendering PDFs with Headless Chrome...")
-        # User Manual PDF
+        print("Rendering High-Contrast PDFs with Headless Chrome...")
         out_pdf_manual = os.path.join(base_dir, "User Manual.pdf")
-        out_pdf_manual_alt = os.path.join(base_dir, "Call_and_Response_MIDI_User_Manual.pdf")
-        out_pdf_manual_doc = os.path.join(doc_dir, "User Manual.pdf")
         
         subprocess.run([
             chrome, "--headless", "--disable-gpu",
             f"--print-to-pdf={out_pdf_manual}",
             "--no-pdf-header-footer",
-            manual_html_path1
+            manual_print_path
         ], check=True)
-        subprocess.run(["cp", out_pdf_manual, out_pdf_manual_alt], check=True)
-        subprocess.run(["cp", out_pdf_manual, out_pdf_manual_doc], check=True)
-        print("Generated User Manual PDFs.")
+        
+        for p in [
+            os.path.join(base_dir, "Call_and_Response_MIDI_User_Manual.pdf"),
+            os.path.join(doc_dir, "User Manual.pdf"),
+            os.path.join(release_dir, "User Manual.pdf"),
+        ]:
+            subprocess.run(["cp", out_pdf_manual, p], check=True)
+        print("Generated High-Contrast User Manual PDFs.")
 
-        # Read Me PDF
         out_pdf_readme = os.path.join(base_dir, "Read Me.pdf")
-        out_pdf_readme_doc = os.path.join(doc_dir, "Read Me.pdf")
         subprocess.run([
             chrome, "--headless", "--disable-gpu",
             f"--print-to-pdf={out_pdf_readme}",
             "--no-pdf-header-footer",
-            readme_html_path1
+            readme_print_path
         ], check=True)
-        subprocess.run(["cp", out_pdf_readme, out_pdf_readme_doc], check=True)
-        print("Generated Read Me PDFs.")
+        
+        for p in [
+            os.path.join(doc_dir, "Read Me.pdf"),
+            os.path.join(release_dir, "Read Me.pdf"),
+        ]:
+            subprocess.run(["cp", out_pdf_readme, p], check=True)
+        print("Generated High-Contrast Read Me PDFs.")
+        
+        # Clean up temporary print html files
+        if os.path.exists(manual_print_path): os.remove(manual_print_path)
+        if os.path.exists(readme_print_path): os.remove(readme_print_path)
     else:
         print("Chrome not found for PDF generation.")
 

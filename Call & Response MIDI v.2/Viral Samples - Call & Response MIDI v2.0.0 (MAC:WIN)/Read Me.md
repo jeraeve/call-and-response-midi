@@ -17,10 +17,10 @@ Viral Samples evolved and expanded these foundational ideas into a native, high-
 - Full **Audio Unit (AU)**, **VST3**, and **Standalone** 64-bit binaries.
 - **Universal macOS Binary**: Native compatibility with macOS 10.14 Mojave Intel (`x86_64`) through macOS Sonoma/Sequoia & Apple Silicon (`arm64`: M1, M2, M3, M4).
 - **Native Windows 64-bit Binary**: Fully self-contained portable VST3 and Standalone executable with static runtime linking.
-- **Brand New Ableton-Inspired Interface**: Beautiful dark theme with high-contrast elements, fixed aspect-ratio scaling ($1180 \times 750$), and ergonomic workflow.
+- **Brand New Ableton-Inspired Interface**: Beautiful dark theme with high-contrast elements, fixed aspect-ratio scaling (1180 × 750), and ergonomic workflow.
 - **Interactive Top Ribbon Bar**: Direct value display boxes for `OCT`, `KEY`, `SCALE`, `b/#`, `STEPS`, `RATE`, and `SWING` with dual dropdown & stepper controls.
 - **Tempo-Relative Playback RATE**: Choose between `Half speed`, `0` (Normal tempo sync), and `Double speed`.
-- **Continuous SWING & VELOCITY Dragging**: Intuitive vertical click-and-drag for seamless groove swing ($0\%–100\%$) and velocity ($1–127$).
+- **Continuous SWING & VELOCITY Dragging**: Intuitive vertical click-and-drag for seamless groove swing (0% – 100%) and velocity (1 – 127).
 - **Dual Phrase Lanes**:
   - Independent **MUTE** bypass buttons for Call and Response.
   - Dedicated per-lane **DICE** mutators with modifiable **MUTATE xx%** depth.
@@ -28,10 +28,10 @@ Viral Samples evolved and expanded these foundational ideas into a native, high-
   - Color-coded visual harmony (Orange for Call, Teal for Response).
 - **Four-Tab Inspector Panel**:
   - **GENERATE**: Style (40 styles), Motif (24 types), Strategy (38 types), Mode, and Ending with individual vector lock padlocks.
-  - **SHAPE**: Gate Length ($0.25\times–2.0\times$), continuous click-and-drag Velocity ($1–127$), Resolve, and Drive.
-  - **ARTICULATION**: Accent Boost, Slide Time, Filter Cutoff ($60\,\text{Hz}–14\,\text{kHz}$), Resonance, and Decay Time.
+  - **SHAPE**: Gate Length (0.25× – 2.0×), continuous click-and-drag Velocity (1 – 127), Resolve, and Drive.
+  - **ARTICULATION**: Accent Boost, Slide Time, Filter Cutoff (60 Hz – 14 kHz), Resonance, and Decay Time.
   - **OPTIONS**: Routing (Channels 1–16, Combined / Split / Layered) and Timing (Sync Mode: Timeline, Restart, Free).
-- **Enhanced Piano Roll**: Repeatable right-edge gate resizing up to $4.0\times$ note length, step auditioning with automatic mouse release stop, pitch transposition, and note editing.
+- **Enhanced Piano Roll**: Repeatable right-edge gate resizing up to 4.0× note length, step auditioning with automatic mouse release stop, pitch transposition, and note editing.
 - **Integrated 303 Analog Synth**: Resonant low-pass filter, fast envelope decay, and saturation drive for immediate zero-latency previews.
 - **8 Rapid Preset Slots (A–H)**: Instant `Cmd+Click` saving, `Double-Click` loading, and right-click context menus.
 - **Multi-Level Undo/Redo & Panic**: 24-step non-destructive history and global All-Notes-Off MIDI Panic button.
@@ -46,9 +46,9 @@ Viral Samples evolved and expanded these foundational ideas into a native, high-
 | **Musical Engine** | 35 Scales (Diatonic, Pentatonic, Blues, Exotic, Arp Pools), 40 Musical Styles, 38 Response Strategies, 24 Opening Motif types. |
 | **Transposition** | Real-time automatic note conforming on Key/Scale/Octave change. Preserves modal intervals and harmonic integrity. |
 | **Top Ribbon** | Direct value displays for `OCT`, `KEY`, `SCALE`, `b/#`, `STEPS`, `RATE`, `SWING` with dropdown menus and stepper arrows. |
-| **Performance** | Continuous SWING ($0\%–100\%$) and VELOCITY ($1–127$) click-and-drag, tempo-relative RATE (Half, 0, Double), Density, Octave Jump. |
+| **Performance** | Continuous SWING (0% – 100%) and VELOCITY (1 – 127) click-and-drag, tempo-relative RATE (Half, 0, Double), Density, Octave Jump. |
 | **Phrase Lanes** | Independent Mute, Dice, modifiable Mutate %, Lock padlocks, Octave transpose, Inversion, Reversal, Copy, and Channel routing. |
-| **Piano Roll** | Color-coded note blocks matching lane themes, repeatable right-edge gate resizing up to $4.0\times$, step auditioning auto-stop. |
+| **Piano Roll** | Color-coded note blocks matching lane themes, repeatable right-edge gate resizing up to 4.0×, step auditioning auto-stop. |
 | **Inspector** | 4 tabs (GENERATE, SHAPE, ARTICULATION, OPTIONS) with individual parameter locks for targeted procedural composition. |
 | **303 Synth** | Built-in analog-modelled sawtooth/square oscillator, resonant 24dB low-pass filter, and snappy decay envelope. |
 | **Presets & History**| 8 quick-recall slots (A–H) with save/load indicators, 24-step undo/redo queue, global MIDI Panic button. |
