@@ -25,20 +25,20 @@ The result is focused, coherent musical hooks, acid basslines, leads, and ostina
 - **35 Musical Scales**: Full support for Diatonic, Pentatonic, Blues, Exotic, and Arpeggio pools with real-time automatic conforming on key or scale changes.
 - **Four-Tab Inspector Panel**:
   - **Generate**: 40 musical styles, 24 motif lead-in hooks, 38 response strategies, mode routing, and cadence endings with individual vector locks.
-  - **Shape**: Gate length scaling ($0.25\times$ to $2.0\times$), continuous velocity control, harmonic resolve, and overdrive.
-  - **Articulation**: TB-303-style accent boost, portamento slide time, filter cutoff, resonance, and envelope decay.
+  - **Shape**: Gate length scaling (0.25× to 2.0×), continuous velocity control (1 – 127), harmonic resolve, and overdrive.
+  - **Articulation**: TB-303-style accent boost, portamento slide time, filter cutoff (60 Hz – 14 kHz), resonance, and envelope decay.
   - **Options**: Flexible channel routing (Combined, Split, or Layered) and DAW timeline synchronization modes.
 
 ### 3. Tactile Performance & Modern Interface
 - **Fixed Aspect-Ratio Interface**: Scalable, high-contrast dark theme calibrated for studio monitors and laptops without distortion or clipped controls.
-- **Direct-Access Top Ribbon**: Live value readouts for Octave, Key, Scale, Accidental ($b/\sharp$), Steps, Rate, and Swing, controllable via dropdown menus or stepper arrows.
-- **Tempo-Relative Playback Rate**: Switch seamlessly between Half speed ($0.5\times$), Normal ($1.0\times$ 16th-note sync), and Double speed ($2.0\times$).
-- **Continuous Modulation Dragging**: Intuitive vertical click-and-drag editing for Swing ($0\%–100\%$) and Velocity ($1–127$).
+- **Direct-Access Top Ribbon**: Live value readouts for Octave, Key, Scale, Accidental (b/#), Steps, Rate, and Swing, controllable via dropdown menus or stepper arrows.
+- **Tempo-Relative Playback Rate**: Switch seamlessly between Half speed (0.5×), Normal (1.0× 16th-note sync), and Double speed (2.0×).
+- **Continuous Modulation Dragging**: Intuitive vertical click-and-drag editing for Swing (0% – 100%) and Velocity (1 – 127).
 - **Nudge & Step Shifting**: Dedicated `[ < ] OFFSET [ > ]` buttons to advance or retard note patterns by single steps.
 
 ### 4. Interactive Piano Roll & Built-in 303 Preview Engine
 - **Visual Color-Coded Matrix**: Lane-matched note blocks (Orange for Call, Teal for Response) with double-click note editing and step auditioning that automatically silences upon mouse release.
-- **Repeatable Gate Resizing**: Click and drag the right edge of any note up to $4.0\times$ step duration.
+- **Repeatable Gate Resizing**: Click and drag the right edge of any note up to 4.0× step duration.
 - **Integrated Analog-Modelled Synth**: Built-in 303-inspired monophonic synthesizer featuring a resonant 24 dB low-pass filter, snappy envelope decay, and saturation—enabling zero-latency previews without wiring auxiliary virtual instruments.
 
 ### 5. Seamless DAW Integration & Presets

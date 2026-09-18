@@ -8,6 +8,8 @@ def clean_latex(text):
     t = text
     t = t.replace(r"\times", "×")
     t = t.replace(r"\pm", "±")
+    t = t.replace(r"\sharp", "#")
+    t = t.replace(r"\%", "%")
     t = t.replace(r"\,", " ")
     t = re.sub(r"\\text\{([^}]+)\}", r"\1", t)
     t = t.replace("$", "")
@@ -576,7 +578,42 @@ Copyright (c) 2026 Viral Samples. All rights reserved.
             f.write(txt_content)
     print("Generated Read Me TXTs.")
 
-    # 4. Sync Markdown files
+    # 4. Product Presentation
+    pres_md_path = os.path.join(base_dir, "PRODUCT_PRESENTATION.md")
+    pres_print_path = os.path.join(base_dir, "PRODUCT_PRESENTATION_Print.html")
+    if os.path.exists(pres_md_path):
+        with open(pres_md_path, "r", encoding="utf-8") as f:
+            pres_md = f.read()
+        pres_body = md_to_html_body(pres_md)
+        pres_web_html = WEB_HTML_TEMPLATE.format(title="Call & Response MIDI — Product Presentation", content=pres_body)
+        pres_pdf_html = PDF_PRINT_TEMPLATE.format(title="Call & Response MIDI — Product Presentation", content=pres_body)
+        
+        for p in [
+            os.path.join(base_dir, "PRODUCT_PRESENTATION.html"),
+            os.path.join(doc_dir, "PRODUCT_PRESENTATION.html"),
+            os.path.join(release_dir, "PRODUCT_PRESENTATION.html"),
+        ]:
+            with open(p, "w", encoding="utf-8") as f:
+                f.write(pres_web_html)
+                
+        with open(pres_print_path, "w", encoding="utf-8") as f:
+            f.write(pres_pdf_html)
+            
+        # Sync TXT and MD
+        pres_txt_path = os.path.join(base_dir, "PRODUCT_PRESENTATION.txt")
+        if os.path.exists(pres_txt_path):
+            with open(pres_txt_path, "r", encoding="utf-8") as f:
+                pres_txt = f.read()
+            for p in [os.path.join(doc_dir, "PRODUCT_PRESENTATION.txt"), os.path.join(release_dir, "PRODUCT_PRESENTATION.txt")]:
+                with open(p, "w", encoding="utf-8") as f:
+                    f.write(pres_txt)
+                    
+        for p in [os.path.join(doc_dir, "PRODUCT_PRESENTATION.md"), os.path.join(release_dir, "PRODUCT_PRESENTATION.md")]:
+            with open(p, "w", encoding="utf-8") as f:
+                f.write(pres_md)
+        print("Generated Product Presentation HTML, TXT, and MD.")
+
+    # 5. Sync Markdown files
     for p in [
         os.path.join(doc_dir, "Call_and_Response_MIDI_User_Manual.md"),
         os.path.join(release_dir, "Call_and_Response_MIDI_User_Manual.md"),
@@ -591,7 +628,7 @@ Copyright (c) 2026 Viral Samples. All rights reserved.
         with open(p, "w", encoding="utf-8") as f:
             f.write(readme_md)
 
-    # 5. Render PDFs with Headless Chrome from High-Contrast Print templates
+    # 6. Render PDFs with Headless Chrome from High-Contrast Print templates
     chrome = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     if os.path.exists(chrome):
         print("Rendering High-Contrast PDFs with Headless Chrome...")
@@ -627,9 +664,25 @@ Copyright (c) 2026 Viral Samples. All rights reserved.
             subprocess.run(["cp", out_pdf_readme, p], check=True)
         print("Generated High-Contrast Read Me PDFs.")
         
+        if os.path.exists(pres_print_path):
+            out_pdf_pres = os.path.join(base_dir, "PRODUCT_PRESENTATION.pdf")
+            subprocess.run([
+                chrome, "--headless", "--disable-gpu",
+                f"--print-to-pdf={out_pdf_pres}",
+                "--no-pdf-header-footer",
+                pres_print_path
+            ], check=True)
+            for p in [
+                os.path.join(doc_dir, "PRODUCT_PRESENTATION.pdf"),
+                os.path.join(release_dir, "PRODUCT_PRESENTATION.pdf"),
+            ]:
+                subprocess.run(["cp", out_pdf_pres, p], check=True)
+            print("Generated High-Contrast Product Presentation PDFs.")
+        
         # Clean up temporary print html files
         if os.path.exists(manual_print_path): os.remove(manual_print_path)
         if os.path.exists(readme_print_path): os.remove(readme_print_path)
+        if os.path.exists(pres_print_path): os.remove(pres_print_path)
     else:
         print("Chrome not found for PDF generation.")
 

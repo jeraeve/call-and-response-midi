@@ -1,0 +1,116 @@
+======================================================================
+CALL & RESPONSE MIDI (v2.0.0)
+Viral Samples | Intelligent Algorithmic Phrase Generator & 303 Sequencer
+======================================================================
+
+OVERVIEW
+----------------------------------------------------------------------
+Call & Response MIDI is a generative phrase synthesizer, performance
+sequencer, and MIDI composition instrument designed to bring structured
+musical conversation to electronic music production.
+
+Unlike conventional randomizers or arpeggiators that produce disconnected
+note patterns, Call & Response MIDI operates on the foundational principle
+of musical dialogue: an opening phrase (Call) establishes the motif, and
+a complementary counter-phrase (Response) provides the harmonic, modal,
+or rhythmic resolution.
+
+The result is focused, coherent musical hooks, acid basslines, leads, and
+ostinatos—generated in seconds and shaped with complete procedural control.
+
+
+KEY FEATURES
+----------------------------------------------------------------------
+
+1. Dual-Phrase Dialogue Architecture:
+   - Independent Call & Response Lanes: Dedicated lanes with individual
+     mute switches, octave transpositions, phrase inversion, and
+     retrograde reversal.
+   - Selective Mutation & Dice: Dedicated per-lane DICE mutators with
+     adjustable mutation depth (MUTATE %), allowing subtle variations
+     without losing the original hook.
+   - Phrase Locking: Individual padlock controls freeze either lane to
+     protect favorite melodies during global rolls.
+
+2. Modal Engine & Procedural Composition:
+   - 35 Musical Scales: Full support for Diatonic, Pentatonic, Blues,
+     Exotic, and Arpeggio pools with real-time automatic note conforming
+     on key or scale changes.
+   - Four-Tab Inspector Panel:
+     * Generate: 40 musical styles, 24 motif lead-in hooks, 38 response
+       strategies, mode routing, and cadence endings with individual locks.
+     * Shape: Gate length scaling (0.25x to 2.0x), continuous velocity
+       control (1-127), harmonic resolve, and overdrive.
+     * Articulation: TB-303-style accent boost, portamento slide time,
+       filter cutoff (60 Hz - 14 kHz), resonance, and envelope decay.
+     * Options: Flexible channel routing (Combined, Split, or Layered)
+       and DAW timeline synchronization modes (Timeline, Restart, Free).
+
+3. Tactile Performance & Modern Interface:
+   - Fixed Aspect-Ratio Interface: Scalable, high-contrast dark theme
+     calibrated for studio monitors and laptops without distortion.
+   - Direct-Access Top Ribbon: Live value displays for Octave, Key,
+     Scale, Accidental (b/#), Steps, Rate, and Swing with dropdowns
+     and stepper arrows.
+   - Tempo-Relative Playback Rate: Switch seamlessly between Half speed
+     (0.5x), Normal (1.0x 16th sync), and Double speed (2.0x).
+   - Continuous Modulation Dragging: Intuitive vertical click-and-drag
+     editing for Swing (0% - 100%) and Velocity (1 - 127).
+   - Nudge & Step Shifting: Dedicated [ < ] OFFSET [ > ] buttons to
+     advance or retard note patterns by single steps.
+
+4. Interactive Piano Roll & Built-in 303 Preview Engine:
+   - Visual Color-Coded Matrix: Lane-matched note blocks (Orange for Call,
+     Teal for Response) with double-click note editing and step auditioning
+     that automatically silences upon mouse release.
+   - Repeatable Gate Resizing: Click and drag the right edge of any note
+     up to 4.0x step duration.
+   - Integrated Analog-Modelled Synth: Built-in 303-inspired monophonic
+     synthesizer featuring a resonant 24 dB low-pass filter, snappy
+     envelope decay, and saturation—enabling zero-latency previews
+     without wiring external instruments.
+
+5. Seamless DAW Integration & Presets:
+   - Direct MIDI Drag & Drop: Export generated phrases directly onto
+     DAW MIDI tracks.
+   - 8 Rapid-Access Preset Slots (A-H): Single-click recall, keyboard
+     shortcut saving, and non-destructive 24-step undo/redo history.
+   - Global Panic Button: Instant All-Notes-Off reset across all 16
+     MIDI channels.
+
+
+TECHNICAL SPECIFICATIONS & REQUIREMENTS
+----------------------------------------------------------------------
+
+macOS Compatibility:
+  - Operating System: macOS 10.14 (Mojave) or later (Catalina, Big Sur,
+    Monterey, Ventura, Sonoma, Sequoia)
+  - Architecture: Universal Binary (Apple Silicon M1-M4 & Intel x86_64)
+  - Formats: VST3, Audio Unit (AU v2), Standalone Application
+  - Validation: 100% Passed Apple auval test suite
+  - Installation: Automated .pkg installer with permission fixes and
+    AU cache registration
+
+Windows Compatibility:
+  - Operating System: Windows 10 or Windows 11 (64-bit)
+  - Architecture: 64-bit Intel / AMD x86-64
+  - Formats: VST3, Standalone Application (.exe)
+  - Runtime: Completely self-contained with static C++ runtime linking
+  - Installation: Clean setup wizard (Setup.exe) with optional shortcuts
+
+DAW Compatibility:
+  Ableton Live, Logic Pro, FL Studio, Studio One, Cubase, Reaper,
+  Bitwig Studio, Cakewalk, and all major VST3/AU hosts.
+
+
+ATTRIBUTIONS & ACKNOWLEDGEMENTS
+----------------------------------------------------------------------
+Call & Response MIDI stands on the shoulders of creative musical innovators:
+- Nordl3: Original concept and pioneering algorithmic dual-phrase dialogue.
+- SideBrain: Renowned Max for Live implementation and workflow concepts.
+- Viral Samples: Native cross-platform C++/JUCE architecture, modern UI,
+  analog synth engine, and expanded feature set.
+
+----------------------------------------------------------------------
+Copyright (c) 2026 Viral Samples. All rights reserved.
+======================================================================
